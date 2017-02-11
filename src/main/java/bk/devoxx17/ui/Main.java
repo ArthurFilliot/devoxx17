@@ -1,5 +1,7 @@
 package bk.devoxx17.ui;
 
+import bk.devoxx17.front.ApplicationScope;
+import bk.devoxx17.front.Dispatcher;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,15 +19,21 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.A,
+	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.A, 
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.B,
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination SHOWHIDE_MENU = new KeyCodeCombination(KeyCode.M,
 			KeyCombination.CONTROL_DOWN);
+	private final static KeyCodeCombination PRINT_METHODTOFIND = new KeyCodeCombination(KeyCode.P,
+			KeyCombination.CONTROL_DOWN);
+	private final static KeyCodeCombination CHANGE_METHODTOFIND = new KeyCodeCombination(KeyCode.C,
+			KeyCombination.CONTROL_DOWN);
+
 
 	public static void main(String[] args) {
 		launch(args);
@@ -44,7 +52,9 @@ public class Main extends Application {
 		Menu mainMenu = new Menu("File");
 		MenuItem fullscreenCmd = new MenuItem("Fullscreen");
 		MenuItem menuCmd = new MenuItem("Show/Hide menus");
-		mainMenu.getItems().addAll(fullscreenCmd, menuCmd);
+		MenuItem menuPrintMethodToFind = new MenuItem("Print MethodToFind");
+		MenuItem menuChangeMethodToFind = new MenuItem("Change MethodToFind");
+		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuPrintMethodToFind, menuChangeMethodToFind);
 		menuBar.getMenus().add(mainMenu);
 
 		/**
@@ -64,7 +74,19 @@ public class Main extends Application {
 			}
 		});
 		menuCmd.setAccelerator(SHOWHIDE_MENU);
-
+		menuPrintMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				System.out.println(ApplicationScope.getInstance().getMethodToFind());			}
+		});
+		menuPrintMethodToFind.setAccelerator(PRINT_METHODTOFIND);
+		menuChangeMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				ApplicationScope.getInstance().chooseNewMethodToFind();			}
+		});
+		menuChangeMethodToFind.setAccelerator(CHANGE_METHODTOFIND);
+		
 		/**
 		 * Create, fill a Grid and package it into a Group
 		 */
@@ -83,8 +105,10 @@ public class Main extends Application {
 		grid.add(connectBtn, 1, 2);
 		connectBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent e) {
+			public void handle(ActionEvent e)  {
 				System.out.println(loginTxt.getText() + "/" + passwordTxt.getText());
+				String result = Dispatcher.check(loginTxt.getText(), passwordTxt.getText())?"OK":"KO";
+				System.out.println("Result:" + result);
 			}
 		});
 		Group group = new Group();

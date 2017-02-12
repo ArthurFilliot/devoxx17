@@ -1,5 +1,7 @@
 package bk.devoxx17.ui;
 
+import org.apache.log4j.Logger;
+
 import bk.devoxx17.front.ApplicationScope;
 import bk.devoxx17.front.Dispatcher;
 import javafx.application.Application;
@@ -19,10 +21,11 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    private static final Logger log = Logger.getLogger(Application.class);
+	
 	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.A, 
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.B,
@@ -77,7 +80,7 @@ public class Main extends Application {
 		menuPrintMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				System.out.println(ApplicationScope.getInstance().getMethodToFind());			}
+				log.info(ApplicationScope.getInstance().getMethodToFind());			}
 		});
 		menuPrintMethodToFind.setAccelerator(PRINT_METHODTOFIND);
 		menuChangeMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
@@ -106,9 +109,9 @@ public class Main extends Application {
 		connectBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e)  {
-				System.out.println(loginTxt.getText() + "/" + passwordTxt.getText());
+				log.info("Typed login/password: "+loginTxt.getText() + "/" + passwordTxt.getText());
 				String result = Dispatcher.check(loginTxt.getText(), passwordTxt.getText())?"OK":"KO";
-				System.out.println("Result:" + result);
+				log.info("Result:" + result);
 			}
 		});
 		Group group = new Group();

@@ -10,17 +10,16 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import org.apache.logging.log4j.util.Strings;
+import org.apache.log4j.Logger;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 public class DatabaseSQL {
+    private static final Logger log = Logger.getLogger(DatabaseSQL.class);
+	
 	private Connection c;
 
 	public boolean openConnection() {
@@ -28,10 +27,10 @@ public class DatabaseSQL {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:test.db");
 		} catch (Exception e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			log.error(e.getMessage() + ':' + e.getStackTrace());
 			System.exit(0);
 		}
-		System.out.println("Opened database successfully");
+		log.info("Opened database successfully");
 		return c != null;
 	}
 
@@ -39,9 +38,10 @@ public class DatabaseSQL {
 		try {
 			c.close();
 		} catch (SQLException e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			log.error(e.getMessage() + ':' + e.getStackTrace());
 			System.exit(0);
 		}
+		log.info("Closed database successfully");
 		return c == null;
 	}
 	
@@ -49,18 +49,20 @@ public class DatabaseSQL {
 		try {
 			c.setAutoCommit(false);
 		} catch (SQLException e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			log.error(e.getMessage() + ':' + e.getStackTrace());
 			System.exit(0);
 		}
+		log.info("New transaction initialized");
 	}
 	
 	public void rollbackTransaction() {
 		try {
 			c.rollback();
 		} catch (SQLException e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			log.error(e.getMessage() + ':' + e.getStackTrace());
 			System.exit(0);
 		}
+		log.info("Transaction rollbacked");
 	}
 
 	public Statement createStatement() {
@@ -68,17 +70,17 @@ public class DatabaseSQL {
 		try {
 			stmt = c.createStatement();
 		} catch (SQLException e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			log.error(e.getMessage() + ':' + e.getStackTrace());
 			System.exit(0);
 		}
 		return stmt;
 	}
 
 	public String getScript(String resourcePath) {
-		String script = Strings.EMPTY;
+		String script = "";
 		try {
 			URL file = this.getClass().getResource(resourcePath);
-			System.out.println("open script file:" + file);
+			log.info("open script file:" + file);
 			BufferedInputStream b;
 
 			b = new BufferedInputStream(file.openStream());
@@ -89,7 +91,7 @@ public class DatabaseSQL {
 				script += new String(contents, 0, bytesRead);
 			}
 		} catch (IOException e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			log.error(e.getMessage() + ':' + e.getStackTrace());
 			System.exit(0);
 		}
 		return script;
@@ -102,18 +104,20 @@ public class DatabaseSQL {
 			affectedRows = stmt.executeUpdate(script);
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			log.error(e.getMessage() + ':' + e.getStackTrace());
 			System.exit(0);
 		}
-		System.out.println("affectedRows:" + affectedRows);
+		log.debug("executedScript:\n" + script);
+		log.info("affectedRows:" + affectedRows);
 		return affectedRows;
 	}
 
 	public Multimap<String, Object> executeSelection(String select) {
+		log.debug("Selection query:\n" + select);
 		Multimap<String, Object> m = null;
 		try {
 			m = ArrayListMultimap.create();
-			Set<String> columnLabels = Sets.newHashSet();
+			List<String> columnLabels = Lists.newArrayList();
 
 			Statement stmt = createStatement();
 			ResultSet rs = stmt.executeQuery(select);
@@ -128,33 +132,34 @@ public class DatabaseSQL {
 				}
 			}
 			stmt.close();
+			log.debug("Selection Results:\n" + printSelection(columnLabels, m));
 			
-			System.out.println("Select Result");
-			String columns = Strings.EMPTY;
-			char sep = '|';
-			for (String columnLabel : columnLabels) {
-				columns += sep + columnLabel;
-			}
-			System.out.println(columns + sep);
-			if (m.size() > 0) {
-				List<List<Object>> cells = Lists.newArrayList();
-				for (String column : m.keySet()) {
-					List<Object> columnCells = Lists.newArrayList();
-					columnCells.addAll(m.get(column));
-					cells.add(columnCells);
-				}
-				for (int i = 0; i < cells.get(0).size(); i++) {
-					String row = Strings.EMPTY;
-					for (int j = 0; j < cells.size(); j++) {
-						row += sep + (String) cells.get(j).get(i);
-					}
-					System.out.println(row + sep);
-				}
-			}
 		} catch (SQLException e) {
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
 		return m;
+	}
+	
+	private String printSelection(List<String> columnLabels, Multimap<String, Object> m) {
+		String results="";
+		String columns = "";
+		char sep = '|';
+		for (String columnLabel : columnLabels) {
+			columns += sep + columnLabel;
+		}
+		results = columns + sep + '\n';
+		if (m.size() > 0) {
+			int i=0;
+			for (Object o : m.get(columnLabels.get(0))) {
+				String row = sep+(String)o;
+				for (int j=1;j<columnLabels.size();j++) {
+					row += sep + (String)((List<Object>)m.get(columnLabels.get(j))).get(i);
+				}
+				results += row + sep+ '\n';
+				i++;
+			}
+		}
+		return results;
 	}
 }

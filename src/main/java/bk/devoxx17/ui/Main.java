@@ -1,5 +1,8 @@
 package bk.devoxx17.ui;
 
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
 
 import bk.devoxx17.front.ApplicationScope;
@@ -10,18 +13,15 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.util.Queue;
+import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 public class Main extends Application {
     private static final Logger log = Logger.getLogger(Application.class);
@@ -36,6 +36,16 @@ public class Main extends Application {
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination CHANGE_METHODTOFIND = new KeyCodeCombination(KeyCode.C,
 			KeyCombination.CONTROL_DOWN);
+	private final static KeyCodeCombination RESET_GAME = new KeyCodeCombination(KeyCode.H,
+			KeyCombination.CONTROL_DOWN);
+
+	/**
+	 * Keyloggers
+     */
+	private Queue<String> konamiCode = new CircularFifoQueue<String>(12);
+	private Queue<String> dernieresTouches = new CircularFifoQueue<String>(12);
+
+	private int intClose = 0;
 
 
 	public static void main(String[] args) {
@@ -46,6 +56,9 @@ public class Main extends Application {
 	public void start(final Stage primaryStage) {
 		primaryStage.setTitle("Big Kahuna Log Hack Game");
 		primaryStage.setFullScreenExitKeyCombination(EXIT_FULLSCREEN_CODE);
+		primaryStage.addEventFilter(KeyEvent.KEY_PRESSED, event -> logKey(event));
+
+		initKonamiCode();
 
 		/**
 		 * Create a Menu.
@@ -69,6 +82,7 @@ public class Main extends Application {
 				primaryStage.setFullScreen(true);
 			}
 		});
+
 		fullscreenCmd.setAccelerator(ENTER_FULLSCREEN_CODE);
 		menuCmd.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -89,7 +103,28 @@ public class Main extends Application {
 				ApplicationScope.getInstance().chooseNewMethodToFind();			}
 		});
 		menuChangeMethodToFind.setAccelerator(CHANGE_METHODTOFIND);
-		
+
+		/**
+		 *
+         */
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+				if (intClose++ < 1) {
+
+					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.setTitle("Nice try");
+					alert.setHeaderText("Alt + F4 detected");
+					alert.setContentText("You know better than that");
+
+					alert.showAndWait();
+
+					event.consume();
+					primaryStage.show();
+				}
+			}
+		});
+
 		/**
 		 * Create, fill a Grid and package it into a Group
 		 */
@@ -122,5 +157,37 @@ public class Main extends Application {
 		root.setCenter(group);
 		primaryStage.setScene(new Scene(root, 300, 250));
 		primaryStage.show();
+	}
+
+	private void logKey(KeyEvent event) {
+		if(event.getCode() == KeyCode.H && event.isControlDown()){
+			log.info("RESTART GAME");
+		}
+		else{
+			dernieresTouches.add(event.getCode().toString());
+
+			if(!dernieresTouches.toString().equals(konamiCode.toString()))return;
+
+			log.info("KONAMI CODE");
+		}
+	}
+
+	private void initKonamiCode() {
+		konamiCode.add("UP");
+		konamiCode.add("UP");
+		konamiCode.add("DOWN");
+		konamiCode.add("DOWN");
+		konamiCode.add("LEFT");
+		konamiCode.add("RIGHT");
+		konamiCode.add("LEFT");
+		konamiCode.add("RIGHT");
+		konamiCode.add("B");
+		konamiCode.add("A");
+		konamiCode.add("ENTER");
+		konamiCode.add("ENTER");
+
+		for(int i = 0 ; i < 12 ; i++) {
+			dernieresTouches.add("");
+		}
 	}
 }

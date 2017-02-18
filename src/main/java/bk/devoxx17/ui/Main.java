@@ -1,5 +1,7 @@
 package bk.devoxx17.ui;
 
+import java.io.File;
+
 import org.apache.log4j.Logger;
 
 import bk.devoxx17.front.ApplicationScope;
@@ -24,9 +26,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private static final Logger log = Logger.getLogger(Application.class);
-	
-	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.A, 
+	private static final Logger log = Logger.getLogger(Application.class);
+
+	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.A,
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.B,
 			KeyCombination.CONTROL_DOWN);
@@ -36,11 +38,6 @@ public class Main extends Application {
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination CHANGE_METHODTOFIND = new KeyCodeCombination(KeyCode.C,
 			KeyCombination.CONTROL_DOWN);
-
-
-	public static void main(String[] args) {
-		launch(args);
-	}
 
 	@Override
 	public void start(final Stage primaryStage) {
@@ -80,16 +77,18 @@ public class Main extends Application {
 		menuPrintMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				log.info(ApplicationScope.getInstance().getMethodToFind());			}
+				log.info(ApplicationScope.getInstance().getMethodToFind());
+			}
 		});
 		menuPrintMethodToFind.setAccelerator(PRINT_METHODTOFIND);
 		menuChangeMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				ApplicationScope.getInstance().chooseNewMethodToFind();			}
+				ApplicationScope.getInstance().chooseNewMethodToFind();
+			}
 		});
 		menuChangeMethodToFind.setAccelerator(CHANGE_METHODTOFIND);
-		
+
 		/**
 		 * Create, fill a Grid and package it into a Group
 		 */
@@ -108,19 +107,44 @@ public class Main extends Application {
 		grid.add(connectBtn, 1, 2);
 		connectBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent e)  {
-				log.info("Typed login/password: "+loginTxt.getText() + "/" + passwordTxt.getText());
-				String result = Dispatcher.check(loginTxt.getText(), passwordTxt.getText())?"OK":"KO";
+			public void handle(ActionEvent e) {
+				log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
+				String result = Dispatcher.check(loginTxt.getText(), passwordTxt.getText()) ? "OK" : "KO";
 				log.info("Result:" + result);
 			}
 		});
 		Group group = new Group();
 		group.getChildren().add(grid);
-		
+
 		BorderPane root = new BorderPane();
 		root.setTop(menuBar);
 		root.setCenter(group);
 		primaryStage.setScene(new Scene(root, 300, 250));
 		primaryStage.show();
+	}
+	
+	private static boolean resetDb() {
+		File file = new File("./test.db");
+		log.debug("Reset db:" + file.getAbsolutePath());
+		if (file.exists()) {
+			return file.delete();
+		}
+		return true;
+	}
+	
+	public static void main(String[] args) {
+		if (resetDb()) {
+			Dispatcher.init();
+		} else {
+			System.exit(0);
+		}
+		launch(args);
+	}
+
+	@Override
+	public void stop() throws Exception {
+		Dispatcher.terminateDb();
+		resetDb();
+		super.stop();
 	}
 }

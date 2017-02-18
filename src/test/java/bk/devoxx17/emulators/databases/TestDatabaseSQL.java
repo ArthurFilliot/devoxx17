@@ -10,18 +10,6 @@ public class TestDatabaseSQL {
 	
 	private static DatabaseSQL db = new DatabaseSQL();
 	
-	@Before
-	public void init() { 
-		db.openConnection();
-		db.openTransaction();
-	}
-	 
-	@After
-	public void terminate() {
-		db.rollbackTransaction();
-		db.closeConnection();
-	}
-	
 	@Test
 	public void testGetScript() {
 		assertNotNull(db.getScript("/sql/schema.sql"));
@@ -29,19 +17,42 @@ public class TestDatabaseSQL {
 	
 	@Test
 	public void testExecuteScript() {
-		assertNotNull(db.executeScript("CREATE TABLE Users (\r\n" + 
+		db.openConnection();
+		db.openTransaction();
+		assertNotNull(db.executeScript("DROP TABLE IF EXISTS Users;"
+				+ "CREATE TABLE Users (\r\n" + 
 				"	ID 			INT 	PRIMARY KEY	NOT NULL,\r\n" + 
 				"    LOGIN   	TEXT    NOT NULL,\r\n" + 
 				"    PASSWORD    INT		NOT NULL\r\n" + 
 				");"));
+		db.rollbackTransaction();
+		db.closeConnection();
 	}
 	
 	@Test
 	public void testExecuteSelection() {
+		db.openConnection();
+		db.openTransaction();
 		String createSchema = db.getScript("/sql/schema.sql");
 		String insertUsers = db.getScript("/sql/users.sql");
 		db.executeScript(createSchema);
 		db.executeScript(insertUsers);
 		assertNotNull(db.executeSelection("SELECT * FROM Users"));
+		db.rollbackTransaction();
+		db.closeConnection();
+	}
+	
+	@Test
+	public void testInitializationScript() {
+		String createSchema = db.getScript("/sql/schema.sql");
+		String insertUsers = db.getScript("/sql/users.sql");
+		db.openConnection();
+		db.executeScript(createSchema);
+		db.executeScript(insertUsers);
+		assertNotNull(db.executeSelection("SELECT * FROM Users"));
+		db.executeScript(createSchema);
+		db.executeScript(insertUsers);
+		assertNotNull(db.executeSelection("SELECT * FROM Users"));
+		db.closeConnection();
 	}
 }

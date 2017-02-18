@@ -1,30 +1,27 @@
-package bk.devoxx17.test;
+package bk.devoxx17.emulators.databases;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import bk.devoxx17.emulators.databases.DatabaseSQL;
-
-public class DatabaseSQLTest {
-
-	private static DatabaseSQL db;
+public class TestDatabaseSQL {
+	
+	private static DatabaseSQL db = new DatabaseSQL();
 	
 	@Before
-	public void init() {
-		db = new DatabaseSQL();
+	public void init() { 
 		db.openConnection();
 		db.openTransaction();
 	}
-	
+	 
 	@After
 	public void terminate() {
 		db.rollbackTransaction();
 		db.closeConnection();
 	}
-
+	
 	@Test
 	public void testGetScript() {
 		assertNotNull(db.getScript("/sql/schema.sql"));

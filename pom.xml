@@ -9,7 +9,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>19.0</version>
+			<version>21.0</version>
 		</dependency>
 
 		<dependency>
@@ -41,6 +41,7 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.1</version>
 		</dependency>
+
 
 	</dependencies>
 

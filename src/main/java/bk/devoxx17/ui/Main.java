@@ -1,5 +1,6 @@
 package bk.devoxx17.ui;
 
+import com.google.common.base.Stopwatch;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.WindowEvent;
@@ -21,11 +22,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.util.Queue;
+
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 public class Main extends Application {
     private static final Logger log = Logger.getLogger(Application.class);
-	
+
 	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.A, 
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.B,
@@ -47,6 +49,7 @@ public class Main extends Application {
 
 	private int intClose = 0;
 
+	private Stopwatch stopwatch = Stopwatch.createStarted();
 
 	public static void main(String[] args) {
 		launch(args);
@@ -189,5 +192,9 @@ public class Main extends Application {
 		for(int i = 0 ; i < 12 ; i++) {
 			dernieresTouches.add("");
 		}
+	}
+
+	private void initStopWatch(){
+		//stopwatch.elapsed();
 	}
 }

@@ -70,10 +70,14 @@ public class Main extends Application {
 		menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
 		Menu mainMenu = new Menu("File");
 		MenuItem fullscreenCmd = new MenuItem("Fullscreen");
+
 		MenuItem menuCmd = new MenuItem("Show/Hide menus");
+		MenuItem menuReset = new MenuItem("Reset Game");
+
 		MenuItem menuPrintMethodToFind = new MenuItem("Print MethodToFind");
 		MenuItem menuChangeMethodToFind = new MenuItem("Change MethodToFind");
-		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuPrintMethodToFind, menuChangeMethodToFind);
+
+		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuReset, menuPrintMethodToFind, menuChangeMethodToFind);
 		menuBar.getMenus().add(mainMenu);
 
 		/**
@@ -85,8 +89,8 @@ public class Main extends Application {
 				primaryStage.setFullScreen(true);
 			}
 		});
-
 		fullscreenCmd.setAccelerator(ENTER_FULLSCREEN_CODE);
+
 		menuCmd.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
@@ -94,16 +98,27 @@ public class Main extends Application {
 			}
 		});
 		menuCmd.setAccelerator(SHOWHIDE_MENU);
+
 		menuPrintMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
 				log.info(ApplicationScope.getInstance().getMethodToFind());			}
 		});
 		menuPrintMethodToFind.setAccelerator(PRINT_METHODTOFIND);
+
+		menuReset.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				log.info("Reset Game");			}
+		});
+		menuReset.setAccelerator(RESET_GAME);
+
 		menuChangeMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				ApplicationScope.getInstance().chooseNewMethodToFind();			}
+				ApplicationScope.getInstance().chooseNewMethodToFind();
+				log.info("Methode changed");
+			}
 		});
 		menuChangeMethodToFind.setAccelerator(CHANGE_METHODTOFIND);
 
@@ -138,7 +153,7 @@ public class Main extends Application {
 		final TextField loginTxt = new TextField();
 		grid.add(new Label("Login: "), 0, 0);
 		grid.add(loginTxt, 1, 0);
-		final TextField passwordTxt = new TextField();
+		final PasswordField  passwordTxt = new PasswordField ();
 		grid.add(new Label("Password: "), 0, 1);
 		grid.add(passwordTxt, 1, 1);
 		Button connectBtn = new Button();
@@ -163,16 +178,8 @@ public class Main extends Application {
 	}
 
 	private void logKey(KeyEvent event) {
-		if(event.getCode() == KeyCode.H && event.isControlDown()){
-			log.info("RESTART GAME");
-		}
-		else{
-			dernieresTouches.add(event.getCode().toString());
-
-			if(!dernieresTouches.toString().equals(konamiCode.toString()))return;
-
-			log.info("KONAMI CODE");
-		}
+		dernieresTouches.add(event.getCode().toString());
+		if (dernieresTouches.toString().equals(konamiCode.toString())) log.info("KONAMI CODE");
 	}
 
 	private void initKonamiCode() {

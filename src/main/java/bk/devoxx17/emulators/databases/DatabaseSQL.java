@@ -17,6 +17,8 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
+import bk.devoxx17.front.ApplicationScope;
+
 public class DatabaseSQL {
     private static final Logger log = Logger.getLogger(DatabaseSQL.class);
 	
@@ -112,11 +114,10 @@ public class DatabaseSQL {
 		return affectedRows;
 	}
 
-	public Multimap<String, Object> executeSelection(String select) {
+	public ArrayListMultimap<String, String> executeSelection(String select) {
 		log.debug("Selection query:\n" + select);
-		Multimap<String, Object> m = null;
+		ArrayListMultimap<String, String> m = ArrayListMultimap.create();
 		try {
-			m = ArrayListMultimap.create();
 			List<String> columnLabels = Lists.newArrayList();
 
 			Statement stmt = createStatement();
@@ -135,13 +136,14 @@ public class DatabaseSQL {
 			log.debug("Selection Results:\n" + printSelection(columnLabels, m));
 			
 		} catch (SQLException e) {
+			ApplicationScope.getInstance().setErrorMessage(e.getMessage());
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
-			System.exit(0);
+//			System.exit(0);
 		}
 		return m;
 	}
 	
-	private String printSelection(List<String> columnLabels, Multimap<String, Object> m) {
+	private String printSelection(List<String> columnLabels, Multimap<String, String> m) {
 		String results="";
 		String columns = "";
 		char sep = '|';
@@ -154,7 +156,7 @@ public class DatabaseSQL {
 			for (Object o : m.get(columnLabels.get(0))) {
 				String row = sep+(String)o;
 				for (int j=1;j<columnLabels.size();j++) {
-					row += sep + (String)((List<Object>)m.get(columnLabels.get(j))).get(i);
+					row += sep + (String)((List<String>)m.get(columnLabels.get(j))).get(i);
 				}
 				results += row + sep+ '\n';
 				i++;

@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import com.google.common.base.Stopwatch;
 
 import bk.devoxx17.front.ApplicationScope;
-import bk.devoxx17.front.Dispatcher;
+import bk.devoxx17.front.Front;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,6 +30,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -48,7 +49,7 @@ public class Main extends Application {
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination RESET_GAME = new KeyCodeCombination(KeyCode.H,
 			KeyCombination.CONTROL_DOWN);
-
+	private static Label resultLabel;
 	/**
 	 * Keyloggers
      */
@@ -164,12 +165,22 @@ public class Main extends Application {
 		Button connectBtn = new Button();
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 2);
+		resultLabel = new Label("ErrorText");
+		resultLabel.setTextFill(Color.web("#EE0000"));
+		resultLabel.setVisible(false);
+		grid.add(resultLabel, 0, 3, 2, 1);
 		connectBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
 				log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
-				String result = Dispatcher.check(loginTxt.getText(), passwordTxt.getText()) ? "OK" : "KO";
-				log.info("Result:" + result);
+				boolean result = Front.check(loginTxt.getText(), passwordTxt.getText());
+				if (!result) {
+					resultLabel.setVisible(true);
+					resultLabel.setText(ApplicationScope.getInstance().getErrorMessage());
+				}else{
+					resultLabel.setVisible(false);
+				}
+				log.info("Result:" + (result ? "OK" : "KO"));
 			}
 		});
 		Group group = new Group();
@@ -221,7 +232,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		if (resetDb()) {
-			Dispatcher.init();
+			Front.init();
 		} else {
 			System.exit(0);
 		}
@@ -230,8 +241,16 @@ public class Main extends Application {
 
 	@Override
 	public void stop() throws Exception {
-		Dispatcher.terminateDb();
+		Front.terminateDb();
 		resetDb();
 		super.stop();
+	}
+	
+	public void displayResult(String text) {
+		
+	}
+	
+	public void displayRedResult(String text) {
+		
 	}
 }

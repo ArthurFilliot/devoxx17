@@ -2,17 +2,19 @@ package bk.devoxx17.test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import bk.devoxx17.front.InjectionMethod;
 import bk.devoxx17.test.MaliciousUserInputDictionnary.UserInput;
 
 public class MaliciousUserInputDictionnary {
 
-	private Map<InjectionMethod, UserInput> dictionnary = Maps.newHashMap();
+	private ArrayListMultimap<InjectionMethod, UserInput> dictionnary = ArrayListMultimap.create();
 
 	@SuppressWarnings("unchecked")
 	public MaliciousUserInputDictionnary() {
@@ -24,11 +26,13 @@ public class MaliciousUserInputDictionnary {
 			for (String key : (Set<String>)(Set<?>)p.keySet()) {
 				if (key.contains(".login")) {
 					key = key.substring(0,key.lastIndexOf('.'));
+					String index = key.substring(key.lastIndexOf('.')+1,key.lastIndexOf('.')+3);
+					key = key.substring(0,key.lastIndexOf('.'));
 					String method	= key.substring(key.lastIndexOf('.')+1);
-					String login 	= p.getProperty(key+".login");
-					String password = p.getProperty(key+".password");
+					String login 	= p.getProperty(key+"." + index + ".login");
+					String password = p.getProperty(key+"."+index+".password");
 					if (password!=null) {
-						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login,password));
+						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login,password, Integer.parseInt(index)));
 					}
 				}			
 			}
@@ -38,29 +42,27 @@ public class MaliciousUserInputDictionnary {
 		}
 	}
 
-	public UserInput get(InjectionMethod method) {
+	public List<UserInput> get(InjectionMethod method) {
 		return dictionnary.get(method);
 	}
 
-	public Set<Map.Entry<InjectionMethod, UserInput>> entrySet() {
-		return dictionnary.entrySet();
-	}
-
 	public void remove(InjectionMethod method) {
-		dictionnary.remove(method);
+		dictionnary.removeAll(method);
 	}
 
-	public Map<InjectionMethod, UserInput> newCopy() {
-		return Maps.newHashMap(dictionnary);
+	public ArrayListMultimap<InjectionMethod, UserInput> newCopy() {
+		return ArrayListMultimap.create(dictionnary);
 	}
 	
 	public class UserInput {
-		public UserInput(String login, String password) {
+		public UserInput(String login, String password, Integer index) {
 			this.login = login;
 			this.password = password;
+			this.index = index;
 		}
 
 		public String login;
 		public String password;
+		public Integer index;
 	}
 }

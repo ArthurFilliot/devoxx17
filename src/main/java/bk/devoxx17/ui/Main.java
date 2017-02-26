@@ -245,12 +245,4 @@ public class Main extends Application {
 		resetDb();
 		super.stop();
 	}
-	
-	public void displayResult(String text) {
-		
-	}
-	
-	public void displayRedResult(String text) {
-		
-	}
 }

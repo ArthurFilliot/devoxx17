@@ -2,11 +2,12 @@ package bk.devoxx17.front;
 
 import org.apache.log4j.Logger;
 
+import com.google.common.collect.ArrayListMultimap;
+
 import bk.devoxx17.emulators.VulnerabilityEmulator;
 import bk.devoxx17.emulators.VulnerabilityEmulatorSQL;
-import bk.devoxx17.emulators.VulnerabilityEmulatorSQLClassical;
-import bk.devoxx17.emulators.VulnerabilityEmulatorSQLUnionExploit;
 import bk.devoxx17.emulators.databases.DatabaseSQL;
+import bk.devoxx17.utils.PasswordGenerator;
 
 public class Front {
 
@@ -22,6 +23,10 @@ public class Front {
 		String insertUsers = db.getScript("/sql/users.sql");
 		db.executeScript(createSchema);
 		db.executeScript(insertUsers);
+		ArrayListMultimap<String, String> result = db.executeSelection("SELECT ID FROM Users");
+		for (String id : result.get("ID")) {
+			db.executeScript("UPDATE Users SET password='" + PasswordGenerator.nextPassword() + "' WHERE id="+id+";");
+		}
 	}
 	public static void terminateDb() {
 		db.closeConnection();

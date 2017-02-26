@@ -1,15 +1,17 @@
 package bk.devoxx17.front;
 
-import bk.devoxx17.emulators.VulnerabilityEmulator;
-import bk.devoxx17.emulators.VulnerabilityEmulatorSQLClassical;
-import bk.devoxx17.emulators.VulnerabilityEmulatorSQLUnionExploit;
+import bk.devoxx17.emulators.*;
 
 public class Dispatcher {
 
 	public static VulnerabilityEmulator selectEmulator(InjectionMethod method) {
 		switch (method) {
-		case CLASSICAL : 		return new VulnerabilityEmulatorSQLClassical();
-		case UNION_EXPLOIT : 	return new VulnerabilityEmulatorSQLUnionExploit();
+		case CLASSICAL : 
+			return new VulnerabilityEmulatorSQLClassical();
+		case CLASSICAL_DELUXE : 		
+			return new VulnerabilityEmulatorSQLClassicalDeluxe();
+		case UNION_EXPLOIT : 	
+			return new VulnerabilityEmulatorSQLUnionExploit();
 		case SOCIAL_HACK_HUMAN:
 			break;
 		case SOCIAL_HACK_KEYBOARD:

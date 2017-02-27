@@ -5,7 +5,7 @@ import java.util.Random;
 public class ApplicationScope {
 	private static ApplicationScope instance;
 	private InjectionMethod methodToFind;
-	private String errorMessage = "Test";
+	private String errorMessage = "";
 	
 	private ApplicationScope(){
 		chooseNewMethodToFind();

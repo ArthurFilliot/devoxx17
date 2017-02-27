@@ -1,0 +1,24 @@
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_2 should not work                  	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_3 should not work                  	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_1 should not work                  	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_1 should not work                         	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassical/CLASSICAL_2 should work                                 	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassical/CLASSICAL_1 should work                                 	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_2 should not work            	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_3 should not work            	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_1 should not work            	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_2 should not work                       	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_1 should not work                       	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_1 should not work                   	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_DELUXE_1 should work                    	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_DELUXE_1 should not work                   	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_2 should not work                          	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_1 should not work                          	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploit/UNION_EXPLOIT_1 should work                          	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_DELUXE_1 should not work             	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_2 should not work                    	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_1 should not work                    	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_1 should not work                	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_2 should work             	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_3 should work             	OK
+2017-02-28 00:08:08 INFO  TestVulnerabilityEmulatorSQL:37 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_1 should work             	OK

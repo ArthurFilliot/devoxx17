@@ -1,5 +1,7 @@
 package bk.devoxx17.front;
 
+import java.sql.SQLException;
+
 import org.apache.log4j.Logger;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -23,9 +25,13 @@ public class Front {
 		String insertUsers = db.getScript("/sql/users.sql");
 		db.executeScript(createSchema);
 		db.executeScript(insertUsers);
-		ArrayListMultimap<String, String> result = db.executeSelection("SELECT ID FROM Users");
-		for (String id : result.get("ID")) {
-			db.executeScript("UPDATE Users SET password='" + PasswordGenerator.nextPassword() + "' WHERE id="+id+";");
+		try {
+			ArrayListMultimap<String, String> result = db.executeSelection("SELECT ID FROM Users");
+			for (String id : result.get("ID")) {
+				db.executeScript("UPDATE Users SET password='" + PasswordGenerator.nextPassword() + "' WHERE id="+id+";");
+			}
+		}catch(SQLException e) {
+			System.exit(0);
 		}
 	}
 	public static void terminateDb() {

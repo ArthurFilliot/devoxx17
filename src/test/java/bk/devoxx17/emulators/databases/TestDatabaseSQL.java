@@ -2,6 +2,8 @@ package bk.devoxx17.emulators.databases;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +32,7 @@ public class TestDatabaseSQL {
 	}
 	
 	@Test
-	public void testExecuteSelection() {
+	public void testExecuteSelection() throws SQLException {
 		db.openConnection();
 		db.openTransaction();
 		String createSchema = db.getScript("/sql/schema.sql");
@@ -43,7 +45,7 @@ public class TestDatabaseSQL {
 	}
 	
 	@Test
-	public void testInitializationScript() {
+	public void testInitializationScript() throws SQLException {
 		String createSchema = db.getScript("/sql/schema.sql");
 		String insertUsers = db.getScript("/sql/users.sql");
 		db.openConnection();

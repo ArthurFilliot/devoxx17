@@ -173,8 +173,9 @@ public class Main extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 				log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
+				ApplicationScope.getInstance().setErrorMessage(null);
 				boolean result = Front.check(loginTxt.getText(), passwordTxt.getText());
-				if (!result) {
+				if (ApplicationScope.getInstance().getErrorMessage()!=null) {
 					resultLabel.setVisible(true);
 					resultLabel.setText(ApplicationScope.getInstance().getErrorMessage());
 				}else{

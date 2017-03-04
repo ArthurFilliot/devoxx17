@@ -114,7 +114,7 @@ public class DatabaseSQL {
 		return affectedRows;
 	}
 
-	public ArrayListMultimap<String, String> executeSelection(String select) {
+	public ArrayListMultimap<String, String> executeSelection(String select) throws SQLException {
 		log.debug("Selection query:\n" + select);
 		ArrayListMultimap<String, String> m = ArrayListMultimap.create();
 		try {
@@ -138,7 +138,7 @@ public class DatabaseSQL {
 		} catch (SQLException e) {
 			ApplicationScope.getInstance().setErrorMessage(e.getMessage());
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
-//			System.exit(0);
+			throw e;
 		}
 		return m;
 	}

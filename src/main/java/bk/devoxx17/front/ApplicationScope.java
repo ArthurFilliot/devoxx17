@@ -20,11 +20,15 @@ public class ApplicationScope {
 	
 	public void chooseNewMethodToFind() {
 		int pick = new Random().nextInt(InjectionMethod.values().length);
+
 		InjectionMethod newMethodToFind=InjectionMethod.values()[pick];
+
 		while (newMethodToFind.equals(methodToFind)) {
 			pick = new Random().nextInt(InjectionMethod.values().length);
 			newMethodToFind=InjectionMethod.values()[pick];
 		}
+
+		//System.out.println(""+pick + " " + methodToFind.toString());
 		methodToFind=newMethodToFind;
 	}
 	

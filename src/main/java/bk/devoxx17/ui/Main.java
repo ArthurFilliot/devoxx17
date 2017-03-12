@@ -1,29 +1,16 @@
 package bk.devoxx17.ui;
 
-import java.io.File;
-import java.util.Queue;
-
-import org.apache.commons.collections4.queue.CircularFifoQueue;
-import org.apache.log4j.Logger;
-
-import com.google.common.base.Stopwatch;
-
 import bk.devoxx17.front.ApplicationScope;
 import bk.devoxx17.front.Front;
+import bk.devoxx17.utils.DownloadTimer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -33,23 +20,35 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.apache.commons.collections4.queue.CircularFifoQueue;
+import org.apache.log4j.Logger;
+
+import java.io.File;
+import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main extends Application {
 	private static final Logger log = Logger.getLogger(Application.class);
 
-	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.A,
+	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.F,
 			KeyCombination.CONTROL_DOWN);
-	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.B,
+	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.G,
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination SHOWHIDE_MENU = new KeyCodeCombination(KeyCode.M,
+            KeyCombination.CONTROL_DOWN);
+    private final static KeyCodeCombination PRINT_METHODTOFIND = new KeyCodeCombination(KeyCode.P,
 			KeyCombination.CONTROL_DOWN);
-	private final static KeyCodeCombination PRINT_METHODTOFIND = new KeyCodeCombination(KeyCode.P,
+	private final static KeyCodeCombination CHANGE_METHODTOFIND = new KeyCodeCombination(KeyCode.O,
 			KeyCombination.CONTROL_DOWN);
-	private final static KeyCodeCombination CHANGE_METHODTOFIND = new KeyCodeCombination(KeyCode.C,
+	private final static KeyCodeCombination RESET_GAME = new KeyCodeCombination(KeyCode.N,
 			KeyCombination.CONTROL_DOWN);
-	private final static KeyCodeCombination RESET_GAME = new KeyCodeCombination(KeyCode.H,
-			KeyCombination.CONTROL_DOWN);
+
 	private static Label resultLabel;
+    private static Label timerLabel;
+
+    DownloadTimer downloadTimer = new DownloadTimer(5, 0);
+
 	/**
 	 * Keyloggers
      */
@@ -58,7 +57,6 @@ public class Main extends Application {
 
 	private int intClose = 0;
 
-	private Stopwatch stopwatch = Stopwatch.createStarted();
 	@Override
 	public void start(final Stage primaryStage) {
 		primaryStage.setTitle("Big Kahuna Log Hack Game");
@@ -114,7 +112,29 @@ public class Main extends Application {
 		menuReset.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				log.info("Reset Game");			}
+				log.info("Reset Game");
+                initStopWatch();
+
+                final Timer timer = new Timer();
+                TimerTask timerTask = new TimerTask(){
+                    @Override
+                    public void run(){
+                        if (downloadTimer.getIsActive() == false){
+                            timer.cancel();
+                            timer.purge();
+                            System.out.println("GUI timer DONE");
+							Platform.exit();
+                        } else {
+							Platform.runLater(new Runnable() {
+								public void run() {
+									timerLabel.setText(downloadTimer.getTime());
+								}
+							});
+                        }
+                    }
+                };
+                timer.scheduleAtFixedRate(timerTask, 0, 1000);
+			}
 		});
 		menuReset.setAccelerator(RESET_GAME);
 
@@ -146,6 +166,13 @@ public class Main extends Application {
 					event.consume();
 					primaryStage.show();
 				}
+				else {
+					try {
+						stop();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		});
 
@@ -165,6 +192,11 @@ public class Main extends Application {
 		Button connectBtn = new Button();
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 2);
+
+        timerLabel = new Label("05:00:00");
+        timerLabel.setVisible(true);
+        grid.add(timerLabel, 0, 4, 2, 1);
+
 		resultLabel = new Label("ErrorText");
 		resultLabel.setTextFill(Color.web("#EE0000"));
 		resultLabel.setVisible(false);
@@ -181,6 +213,7 @@ public class Main extends Application {
 				}else{
 					resultLabel.setVisible(false);
 				}
+
 				log.info("Result:" + (result ? "OK" : "KO"));
 			}
 		});
@@ -219,7 +252,7 @@ public class Main extends Application {
 	}
 
 	private void initStopWatch(){
-		//stopwatch.elapsed();
+        downloadTimer.start();
 	}
 	
 	private static boolean resetDb() {
@@ -242,8 +275,10 @@ public class Main extends Application {
 
 	@Override
 	public void stop() throws Exception {
+	    downloadTimer.stop();
 		Front.terminateDb();
 		resetDb();
 		super.stop();
+		System.exit(0);
 	}
 }

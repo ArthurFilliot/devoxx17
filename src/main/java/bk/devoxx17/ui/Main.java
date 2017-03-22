@@ -1,5 +1,13 @@
 package bk.devoxx17.ui;
 
+import java.io.File;
+import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.apache.commons.collections4.queue.CircularFifoQueue;
+import org.apache.log4j.Logger;
+
 import bk.devoxx17.front.ApplicationScope;
 import bk.devoxx17.front.Front;
 import bk.devoxx17.utils.DownloadTimer;
@@ -10,7 +18,15 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -20,13 +36,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.apache.commons.collections4.queue.CircularFifoQueue;
-import org.apache.log4j.Logger;
-
-import java.io.File;
-import java.util.Queue;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Main extends Application {
 	private static final Logger log = Logger.getLogger(Application.class);
@@ -186,9 +195,21 @@ public class Main extends Application {
 		final TextField loginTxt = new TextField();
 		grid.add(new Label("Login: "), 0, 0);
 		grid.add(loginTxt, 1, 0);
+		
+		final CheckBox checkbox = new javafx.scene.control.CheckBox();
+		
 		final PasswordField  passwordTxt = new PasswordField ();
 		grid.add(new Label("Password: "), 0, 1);
 		grid.add(passwordTxt, 1, 1);
+		final TextField dispPwd = new TextField();
+		passwordTxt.managedProperty().bind(checkbox.selectedProperty().not());
+		passwordTxt.visibleProperty().bind(checkbox.selectedProperty().not());
+		dispPwd.managedProperty().bind(checkbox.selectedProperty());
+		dispPwd.visibleProperty().bind(checkbox.selectedProperty());
+		dispPwd.textProperty().bindBidirectional(passwordTxt.textProperty());
+		grid.add(dispPwd, 1, 1);
+		grid.add(checkbox, 2, 1);
+		
 		Button connectBtn = new Button();
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 2);
@@ -231,8 +252,12 @@ public class Main extends Application {
 		dernieresTouches.add(event.getCode().toString());
 		if (dernieresTouches.toString().equals(konamiCode.toString())) {
 			System.out.println("KONAMI");
-			resultLabel.setVisible(true);
-			resultLabel.setText(ApplicationScope.getInstance().getErrorMessage());
+			String pwd = Front.getKonamiCode();
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Nice try");
+			alert.setHeaderText("Here is the Konami password : " + pwd);
+			alert.setContentText("You know better than that");
+			alert.showAndWait();
 		}
 	}
 

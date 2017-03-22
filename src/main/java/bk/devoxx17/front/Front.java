@@ -26,7 +26,7 @@ public class Front {
 		db.executeScript(createSchema);
 		db.executeScript(insertUsers);
 		try {
-			ArrayListMultimap<String, String> result = db.executeSelection("SELECT ID FROM Users WHERE login='lambda'");
+			ArrayListMultimap<String, String> result = db.executeSelection("SELECT ID FROM Users WHERE login<>'root'");
 			for (String id : result.get("ID")) {
 				db.executeScript("UPDATE Users SET password='" + PasswordGenerator.nextPassword() + "' WHERE id="+id+";");
 			}
@@ -56,6 +56,15 @@ public class Front {
 			((VulnerabilityEmulatorSQL) emulator).setDb(db);
 		}
 		return emulator.check(login, password);
+	}
+	
+	public static String getKonamiCode() {
+		String pwd="";
+		try {
+			ArrayListMultimap<String, String> result = db.executeSelection("SELECT password FROM Users WHERE login='Konami'");
+			pwd = result.get("PASSWORD").get(0);
+		}catch(Exception e) {}
+		return pwd;
 	}
 	
 }

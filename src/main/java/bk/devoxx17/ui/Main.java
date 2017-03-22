@@ -229,7 +229,11 @@ public class Main extends Application {
 	
 	private void logKey(KeyEvent event) {
 		dernieresTouches.add(event.getCode().toString());
-		if (dernieresTouches.toString().equals(konamiCode.toString())) log.info("KONAMI CODE");
+		if (dernieresTouches.toString().equals(konamiCode.toString())) {
+			System.out.println("KONAMI");
+			resultLabel.setVisible(true);
+			resultLabel.setText(ApplicationScope.getInstance().getErrorMessage());
+		}
 	}
 
 	private void initKonamiCode() {

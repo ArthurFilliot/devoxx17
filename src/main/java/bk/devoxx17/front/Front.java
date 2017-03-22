@@ -26,7 +26,7 @@ public class Front {
 		db.executeScript(createSchema);
 		db.executeScript(insertUsers);
 		try {
-			ArrayListMultimap<String, String> result = db.executeSelection("SELECT ID FROM Users");
+			ArrayListMultimap<String, String> result = db.executeSelection("SELECT ID FROM Users WHERE login='lambda'");
 			for (String id : result.get("ID")) {
 				db.executeScript("UPDATE Users SET password='" + PasswordGenerator.nextPassword() + "' WHERE id="+id+";");
 			}

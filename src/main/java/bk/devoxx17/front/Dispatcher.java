@@ -14,6 +14,14 @@ public class Dispatcher {
 			return new VulnerabilityEmulatorSQLUnionExploit();
 		case UNION_EXPLOIT_DELUXE : 	
 			return new VulnerabilityEmulatorSQLUnionExploitDeluxe();
+		case STACKED_QUERIES : 	
+			return new VulnerabilityEmulatorSQLStackedQueries();
+		case SOCIAL_HACK_KEYBOARD :
+			return new VulnerabilityEmulatorSQLSocialPostIt();
+		case SOCIAL_HACK_HUMAN :
+			return new VulnerabilityEmulatorSQLSocialAskaMember();
+		case SOCIAL_HACK_KONAMI :
+			return new VulnerabilityEmulatorSQLSocialKonamiCode();
 		default:
 			break;
 		}

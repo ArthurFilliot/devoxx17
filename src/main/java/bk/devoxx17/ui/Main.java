@@ -110,14 +110,6 @@ public class Main extends Application {
 		});
 		menuCmd.setAccelerator(SHOWHIDE_MENU);
 
-		menuPrintMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				log.info(ApplicationScope.getInstance().getMethodToFind());
-			}
-		});
-		menuPrintMethodToFind.setAccelerator(PRINT_METHODTOFIND);
-
 		menuReset.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
@@ -150,7 +142,7 @@ public class Main extends Application {
 		menuChangeMethodToFind.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				ApplicationScope.getInstance().chooseNewMethodToFind();
+				ApplicationScope.getInstance().init();
 				log.info("Methode changed");
 			}
 		});
@@ -304,7 +296,7 @@ public class Main extends Application {
 
 	@Override
 	public void stop() throws Exception {
-	    downloadTimer.stop();
+//	    downloadTimer.stop();
 		Front.terminateDb();
 		resetDb();
 		super.stop();

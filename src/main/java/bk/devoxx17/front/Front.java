@@ -17,9 +17,14 @@ public class Front {
 	
 	private static DatabaseSQL db = new DatabaseSQL();
 	static {
-		initDb();
+		try {
+			initDb();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.exit(0);		
+		}
 	}
-	public static void initDb() {
+	public static void initDb() throws SQLException {
 		db.openConnection();
 		String createSchema = db.getScript("/sql/schema.sql");
 		String insertUsers = db.getScript("/sql/users.sql");
@@ -37,7 +42,7 @@ public class Front {
 	public static void terminateDb() {
 		db.closeConnection();
 	}
-	public static void setDb(DatabaseSQL db) {
+	public static void setDb(DatabaseSQL db) throws SQLException {
 		Front.db.closeConnection();
 		Front.db = db;
 		initDb();
@@ -55,7 +60,7 @@ public class Front {
 		if (emulator instanceof VulnerabilityEmulatorSQL) {
 			((VulnerabilityEmulatorSQL) emulator).setDb(db);
 		}
-		return emulator.check(login, password);
+		return emulator.doCheck(login, password);
 	}
 	
 	public static String getKonamiCode() {

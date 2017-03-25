@@ -99,15 +99,16 @@ public class DatabaseSQL {
 		return script;
 	}
 
-	public Integer executeScript(String script) {
+	public Integer executeScript(String script) throws SQLException {
 		Integer affectedRows = null;
 		try {
 			Statement stmt = createStatement();
 			affectedRows = stmt.executeUpdate(script);
 			stmt.close();
 		} catch (SQLException e) {
-			log.error(e.getMessage() + ':' + e.getStackTrace());
-			System.exit(0);
+			ApplicationScope.getInstance().setErrorMessage(e.getMessage());
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			throw e;
 		}
 		log.debug("executedScript:\n" + script);
 		log.info("affectedRows:" + affectedRows);

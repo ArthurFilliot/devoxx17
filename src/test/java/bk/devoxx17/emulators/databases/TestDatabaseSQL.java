@@ -18,7 +18,7 @@ public class TestDatabaseSQL {
 	}
 	
 	@Test
-	public void testExecuteScript() {
+	public void testExecuteScript() throws SQLException {
 		db.openConnection();
 		db.openTransaction();
 		assertNotNull(db.executeScript("DROP TABLE IF EXISTS Users;"

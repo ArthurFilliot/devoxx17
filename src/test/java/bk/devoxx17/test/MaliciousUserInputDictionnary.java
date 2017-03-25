@@ -40,14 +40,16 @@ public class MaliciousUserInputDictionnary {
 					String login1 	= p.getProperty(key+"." + index + ".login.step1");
 					String login2 	= p.getProperty(key+"." + index + ".login.step2");
 					String login3 	= p.getProperty(key+"." + index + ".login.step3");
-					String password3 = p.getProperty(key+"." + index + ".password.step3");
+					String password1 = p.getProperty(key+"." + index + ".password.step1")==null?"":p.getProperty(key+"." + index + ".password.step1");
+					String password2 = p.getProperty(key+"." + index + ".password.step2")==null?"":p.getProperty(key+"." + index + ".password.step2");
+					String password3 = p.getProperty(key+"." + index + ".password.step3")==null?"":p.getProperty(key+"." + index + ".password.step3");
 
 					if (login!=null) {
 						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login,password!=null?password:"", Integer.parseInt(index),null));
 					}
 					if (login1!=null) {
-						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login1,"", Integer.parseInt(index),1));
-						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login2,"", Integer.parseInt(index),2));
+						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login1,password1, Integer.parseInt(index),1));
+						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login2,password2, Integer.parseInt(index),2));
 						dictionnary.put(InjectionMethod.valueOf(method), new UserInput(login3,password3, Integer.parseInt(index),3));
 					}
 				}			

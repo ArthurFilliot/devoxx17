@@ -12,7 +12,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.SortedSetMultimap;
 import com.google.common.collect.TreeMultimap;
 
-import bk.devoxx17.front.InjectionMethod;
+import bk.devoxx17.emulators.InjectionMethod;
 import bk.devoxx17.test.MaliciousUserInputDictionnary.UserInput;
 
 public class MaliciousUserInputDictionnary {

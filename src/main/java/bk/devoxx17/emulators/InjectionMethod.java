@@ -1,4 +1,4 @@
-package bk.devoxx17.front;
+package bk.devoxx17.emulators;
 
 public enum InjectionMethod {
 	SOCIAL_HACK_KEYBOARD("Social Hack Keyboard",1),

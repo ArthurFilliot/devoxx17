@@ -1,6 +1,4 @@
-package bk.devoxx17.front;
-
-import bk.devoxx17.emulators.*;
+package bk.devoxx17.emulators;
 
 public class Dispatcher {
 

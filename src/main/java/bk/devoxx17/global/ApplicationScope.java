@@ -1,8 +1,10 @@
-package bk.devoxx17.front;
+package bk.devoxx17.global;
 
 import java.util.List;
 
 import com.google.common.collect.Lists;
+
+import bk.devoxx17.emulators.InjectionMethod;
 
 public class ApplicationScope {
 	private static ApplicationScope instance;

@@ -1,4 +1,4 @@
-package bk.devoxx17.emulators.databases;
+package bk.devoxx17.utils;
 
 import static org.junit.Assert.assertNotNull;
 

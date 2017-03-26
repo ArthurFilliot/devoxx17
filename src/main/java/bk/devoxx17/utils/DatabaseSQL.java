@@ -1,4 +1,4 @@
-package bk.devoxx17.emulators.databases;
+package bk.devoxx17.utils;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
-import bk.devoxx17.front.ApplicationScope;
+import bk.devoxx17.global.ApplicationScope;
 
 public class DatabaseSQL {
     private static final Logger log = Logger.getLogger(DatabaseSQL.class);

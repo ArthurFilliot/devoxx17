@@ -1,6 +1,6 @@
 package bk.devoxx17.test;
 
-import bk.devoxx17.emulators.databases.DatabaseSQL;
+import bk.devoxx17.utils.DatabaseSQL;
 
 public class DatabaseSQLHelper {
 	private static DatabaseSQL db = new DatabaseSQL();

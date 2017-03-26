@@ -1,5 +1,5 @@
 package bk.devoxx17.emulators;
 
-public enum CompromisedLogin {
+enum CompromisedLogin {
 	root, postIt, Konami
 }

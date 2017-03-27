@@ -20,17 +20,17 @@ import com.google.common.collect.TreeMultimap;
 
 import bk.devoxx17.emulators.InjectionMethod;
 import bk.devoxx17.global.ApplicationScope;
-import bk.devoxx17.test.MaliciousUserInputDictionnary.UserInput;
+import bk.devoxx17.test.MaliciousUserInputDictionnary2.UserInput;
 
-public class MaliciousUserInputDictionnary {
+public class MaliciousUserInputDictionnary2 {
 
 	private ArrayListMultimap<InjectionMethod, UserInput> dictionnary = ArrayListMultimap.create();
 
 	@SuppressWarnings("unchecked")
-	public MaliciousUserInputDictionnary() {
+	public MaliciousUserInputDictionnary2() {
 		try {
 			Properties p = new Properties();
-			InputStream in = MaliciousUserInputDictionnary.class.getResourceAsStream("/malicioususerinputs.properties");
+			InputStream in = MaliciousUserInputDictionnary2.class.getResourceAsStream("/malicioususerinputs2.properties");
 			p.load(in);
 			in.close();
 			for (String key : (Set<String>)(Set<?>)p.keySet()) {
@@ -102,12 +102,12 @@ public class MaliciousUserInputDictionnary {
 			String step1data = getCompromisedData(ApplicationScope.getInstance().getErrorMessage());
 			login = steps.get(1).login.replace("step1", step1data);
 			password = steps.get(1).password.replace("step1", step1data);
-			funcCheck.apply(login, password);
-			String step2data = getCompromisedData(ApplicationScope.getInstance().getErrorMessage());
 			if (steps.get(2).login==null) {
 				funcAssert.accept(message, funcCheck.apply(login, password));
 				return;
 			}
+			funcCheck.apply(login, password);
+			String step2data = getCompromisedData(ApplicationScope.getInstance().getErrorMessage());
 			login = steps.get(2).login.replace("step1", step1data).replace("step2", step2data);
 			password = steps.get(2).password.replace("step1", step1data).replace("step2", step2data);
 			funcAssert.accept(message, funcCheck.apply(login, password));

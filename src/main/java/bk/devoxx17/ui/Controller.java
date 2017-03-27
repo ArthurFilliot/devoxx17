@@ -1,12 +1,9 @@
 package bk.devoxx17.ui;
 
-import java.io.File;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.apache.log4j.Logger;
@@ -22,8 +19,6 @@ import bk.devoxx17.global.ApplicationScope;
 import bk.devoxx17.utils.DatabaseSQL;
 import bk.devoxx17.utils.DownloadTimer;
 import bk.devoxx17.utils.PasswordGenerator;
-import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 
@@ -95,7 +90,7 @@ public class Controller {
 		db.executeScript(insertUsers);
 		try {
 			ArrayListMultimap<String, String> result = db
-					.executeSelection("SELECT ID FROM Users WHERE login in ('root','lambda','Konami')");
+					.executeSelection("SELECT ID FROM Users WHERE login in ('lambda','Konami')");
 			for (String id : result.get("ID")) {
 				db.executeScript("UPDATE Users SET password='"
 						+ PasswordGenerator.nextPassword().replace('\'', '_').replace(';', '_') + "' WHERE id=" + id
@@ -139,6 +134,7 @@ public class Controller {
 				score += method.getScore();
 				it.remove();
 				foundMethods.add(method);
+				break;
 			}
 		}
 		if (foundMethods.size() > 0) {

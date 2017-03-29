@@ -35,6 +35,8 @@ public class View {
             KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination RESET_GAME = new KeyCodeCombination(KeyCode.N,
 			KeyCombination.CONTROL_DOWN);
+	private final static KeyCodeCombination STOP_GAME = new KeyCodeCombination(KeyCode.S,
+			KeyCombination.CONTROL_DOWN);
 
 	private static Label resultLabel;
     private static Label timerLabel;
@@ -47,7 +49,11 @@ public class View {
 	private Menu mainMenu = new Menu("File");
 	private MenuItem fullscreenCmd = new MenuItem("Fullscreen");
 	private MenuItem menuCmd = new MenuItem("Show/Hide menus");
+	private MenuItem menuStop = new MenuItem("Stop Game");
 	private MenuItem menuReset = new MenuItem("Reset Game");
+
+	private static boolean gameRunning = false;
+	private static final Timer timer = new Timer();
 	    
 	public View() {}
 	
@@ -67,13 +73,15 @@ public class View {
 		menuCmd.setAccelerator(SHOWHIDE_MENU);
 		menuReset.setOnAction(event -> resetGame());
 		menuReset.setAccelerator(RESET_GAME);
+		menuStop.setOnAction(event -> stopGame());
+		menuStop.setAccelerator(STOP_GAME);
 		connectBtn.setOnAction(event -> doTry());
 		
 		/**
 		 * Build Menu.
 		 */
 		menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
-		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuReset);
+		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuReset, menuStop);
 		menuBar.getMenus().add(mainMenu);
 
 		/**
@@ -124,31 +132,43 @@ public class View {
 	}
 	
 	private static void resetGame() {
-//		log.info("Reset Game");
-        Controller.initStopWatch();
+		if(!gameRunning) {
+			gameRunning = true;
+			Controller.downloadTimer.resetTimer(5, 0);
+			Controller.initStopWatch();
 
-        final Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask(){
-            @Override
-            public void run(){
-                tickTimer(timer);
-            }
-        };
-        timer.scheduleAtFixedRate(timerTask, 0, 1000);
+			try {
+				TimerTask timerTask = new TimerTask() {
+					@Override
+					public void run() {
+						tickTimer(timer);
+					}
+				};
+				timer.scheduleAtFixedRate(timerTask, 0, 1000);
+			}
+			catch (Exception e) {
+			}
+		}
+	}
+
+	private static void stopGame() {
+		if(gameRunning) {
+			gameRunning = false;
+			Controller.downloadTimer.stop();
+		}
 	}
 	
 	private static void tickTimer(Timer timer) {
+		Platform.runLater(new Runnable() {
+			public void run() {
+				timerLabel.setText(Controller.downloadTimer.getTime());
+			}
+		});
 		if (Controller.downloadTimer.getIsActive() == false){
             timer.cancel();
             timer.purge();
-            System.out.println("GUI timer DONE");
-			Platform.exit();
         } else {
-			Platform.runLater(new Runnable() {
-				public void run() {
-					timerLabel.setText(Controller.downloadTimer.getTime());
-				}
-			});
+
         }
 	}
 	

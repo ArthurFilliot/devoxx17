@@ -1,0 +1,184 @@
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/CLASSICAL_DELUXE_1 should not work                   	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_DELUXE_2 should not work               	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_DELUXE_3 should not work               	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_DELUXE_1 should not work               	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_1 should not work                      	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/STACKED_QUERIES_2 should not work                    	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/STACKED_QUERIES_1 should not work                    	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/SOCIAL_HACK_HUMAN_1 should not work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/SOCIAL_HACK_KONAMI_1 should not work                 	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/CLASSICAL_2 should not work                          	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/CLASSICAL_1 should not work                          	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialPostIt/SOCIAL_HACK_KEYBOARD_1 should work                   	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/SOCIAL_HACK_KEYBOARD_1 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/CLASSICAL_DELUXE_1 should not work               	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_DELUXE_2 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_DELUXE_3 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_DELUXE_1 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_1 should not work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/STACKED_QUERIES_2 should not work                	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/STACKED_QUERIES_1 should not work                	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/SOCIAL_HACK_KONAMI_1 should not work             	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/CLASSICAL_2 should not work                      	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/CLASSICAL_1 should not work                      	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialAskaMember/SOCIAL_HACK_HUMAN_1 should work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/SOCIAL_HACK_KEYBOARD_1 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/CLASSICAL_DELUXE_1 should not work               	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_DELUXE_2 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_DELUXE_3 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_DELUXE_1 should not work           	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_1 should not work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/STACKED_QUERIES_2 should not work                	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/STACKED_QUERIES_1 should not work                	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/SOCIAL_HACK_HUMAN_1 should not work              	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/CLASSICAL_2 should not work                      	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/CLASSICAL_1 should not work                      	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLSocialKonamiCode/SOCIAL_HACK_KONAMI_1 should work                 	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/SOCIAL_HACK_KEYBOARD_1 should not work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_2 should not work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_3 should not work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_1 should not work                  	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_1 should not work                         	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/STACKED_QUERIES_2 should not work                       	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/STACKED_QUERIES_1 should not work                       	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/SOCIAL_HACK_HUMAN_1 should not work                     	OK
+2017-03-26 21:52:24 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/SOCIAL_HACK_KONAMI_1 should not work                    	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/CLASSICAL_2 should work                                 	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassical/CLASSICAL_1 should work                                 	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/SOCIAL_HACK_KEYBOARD_1 should not work            	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_2 should not work            	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_3 should not work            	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_1 should not work            	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_1 should not work                   	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/STACKED_QUERIES_2 should not work                 	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/STACKED_QUERIES_1 should not work                 	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/SOCIAL_HACK_HUMAN_1 should not work               	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/SOCIAL_HACK_KONAMI_1 should not work              	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_2 should not work                       	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_1 should not work                       	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_DELUXE_1 should work                    	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/SOCIAL_HACK_KEYBOARD_1 should not work               	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_DELUXE_1 should not work                   	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/STACKED_QUERIES_2 should not work                    	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/STACKED_QUERIES_1 should not work                    	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/SOCIAL_HACK_HUMAN_1 should not work                  	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/SOCIAL_HACK_KONAMI_1 should not work                 	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_2 should not work                          	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_1 should not work                          	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploit/UNION_EXPLOIT_1 should work                          	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/SOCIAL_HACK_KEYBOARD_1 should not work             	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/CLASSICAL_DELUXE_1 should not work                 	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_DELUXE_2 should not work             	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_DELUXE_3 should not work             	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_DELUXE_1 should not work             	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_1 should not work                    	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/SOCIAL_HACK_HUMAN_1 should not work                	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/SOCIAL_HACK_KONAMI_1 should not work               	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/CLASSICAL_2 should not work                        	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/CLASSICAL_1 should not work                        	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/STACKED_QUERIES_2 should work                      	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLStackedQueries/STACKED_QUERIES_1 should work                      	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/SOCIAL_HACK_KEYBOARD_1 should not work         	KO
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_DELUXE_1 should not work             	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_1 should not work                	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/STACKED_QUERIES_2 should not work              	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/STACKED_QUERIES_1 should not work              	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/SOCIAL_HACK_HUMAN_1 should not work            	KO
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/SOCIAL_HACK_KONAMI_1 should not work           	KO
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_2 should not work                    	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_1 should not work                    	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_2 should work             	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_3 should work             	OK
+2017-03-26 21:52:25 INFO  TestVulnerabilityEmulatorSQL:34 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_1 should work             	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/SOCIAL_HACK_KONAMI_1 should not work                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/CLASSICAL_DELUXE_1 should not work                   	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/SOCIAL_HACK_HUMAN_1 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/STACKED_QUERIES_2 should not work                    	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/STACKED_QUERIES_1 should not work                    	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/CLASSICAL_2 should not work                          	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/CLASSICAL_1 should not work                          	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_1 should not work                      	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_DELUXE_2 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_DELUXE_3 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/UNION_EXPLOIT_DELUXE_1 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialPostIt/SOCIAL_HACK_KEYBOARD_1 should work                   	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/SOCIAL_HACK_KONAMI_1 should not work             	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/SOCIAL_HACK_KEYBOARD_1 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/CLASSICAL_DELUXE_1 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/STACKED_QUERIES_2 should not work                	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/STACKED_QUERIES_1 should not work                	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/CLASSICAL_2 should not work                      	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/CLASSICAL_1 should not work                      	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_1 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_DELUXE_2 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_DELUXE_3 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/UNION_EXPLOIT_DELUXE_1 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialAskaMember/SOCIAL_HACK_HUMAN_1 should work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/SOCIAL_HACK_KEYBOARD_1 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/CLASSICAL_DELUXE_1 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/SOCIAL_HACK_HUMAN_1 should not work              	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/STACKED_QUERIES_2 should not work                	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/STACKED_QUERIES_1 should not work                	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/CLASSICAL_2 should not work                      	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/CLASSICAL_1 should not work                      	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_1 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_DELUXE_2 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_DELUXE_3 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/UNION_EXPLOIT_DELUXE_1 should not work           	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLSocialKonamiCode/SOCIAL_HACK_KONAMI_1 should work                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/SOCIAL_HACK_KONAMI_1 should not work                    	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/SOCIAL_HACK_KEYBOARD_1 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/SOCIAL_HACK_HUMAN_1 should not work                     	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/STACKED_QUERIES_2 should not work                       	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/STACKED_QUERIES_1 should not work                       	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_1 should not work                         	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_2 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_3 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/UNION_EXPLOIT_DELUXE_1 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/CLASSICAL_2 should work                                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassical/CLASSICAL_1 should work                                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/SOCIAL_HACK_KONAMI_1 should not work              	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/SOCIAL_HACK_KEYBOARD_1 should not work            	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/SOCIAL_HACK_HUMAN_1 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/STACKED_QUERIES_2 should not work                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/STACKED_QUERIES_1 should not work                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_2 should not work                       	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_1 should not work                       	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_1 should not work                   	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_2 should not work            	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_3 should not work            	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/UNION_EXPLOIT_DELUXE_1 should not work            	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLClassicalDeluxe/CLASSICAL_DELUXE_1 should work                    	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/SOCIAL_HACK_KONAMI_1 should not work                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/SOCIAL_HACK_KEYBOARD_1 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_DELUXE_1 should not work                   	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/SOCIAL_HACK_HUMAN_1 should not work                  	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/STACKED_QUERIES_2 should not work                    	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/STACKED_QUERIES_1 should not work                    	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_2 should not work                          	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/CLASSICAL_1 should not work                          	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploit/UNION_EXPLOIT_1 should work                          	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/SOCIAL_HACK_KONAMI_1 should not work               	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/SOCIAL_HACK_KEYBOARD_1 should not work             	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/CLASSICAL_DELUXE_1 should not work                 	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/SOCIAL_HACK_HUMAN_1 should not work                	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/CLASSICAL_2 should not work                        	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/CLASSICAL_1 should not work                        	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_1 should not work                    	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_DELUXE_2 should not work             	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_DELUXE_3 should not work             	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/UNION_EXPLOIT_DELUXE_1 should not work             	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/STACKED_QUERIES_2 should work                      	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLStackedQueries/STACKED_QUERIES_1 should work                      	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/SOCIAL_HACK_KONAMI_1 should not work           	KO
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/SOCIAL_HACK_KEYBOARD_1 should not work         	KO
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_DELUXE_1 should not work             	OK
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/SOCIAL_HACK_HUMAN_1 should not work            	KO
+2017-03-29 20:53:19 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/STACKED_QUERIES_2 should not work              	OK
+2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/STACKED_QUERIES_1 should not work              	OK
+2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_2 should not work                    	OK
+2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/CLASSICAL_1 should not work                    	OK
+2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_1 should not work                	OK
+2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_2 should work             	OK
+2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_3 should work             	OK
+2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_1 should work             	OK

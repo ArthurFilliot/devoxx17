@@ -22,6 +22,7 @@ import bk.devoxx17.utils.PasswordGenerator;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 
+
 public class Controller {
 
 	private static Logger log = Logger.getLogger(Controller.class);
@@ -79,6 +80,7 @@ public class Controller {
 	}
 
 	static void initStopWatch(){
+		//downloadTimer.
         downloadTimer.start();
 	}
 

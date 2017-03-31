@@ -40,6 +40,7 @@ public class View {
 
 	private static Label resultLabel;
     private static Label timerLabel;
+    private static Label scoreLabel;
 	private MenuBar menuBar = new MenuBar();
 	private TextField loginTxt = new TextField();
 	private CheckBox checkbox = new javafx.scene.control.CheckBox();
@@ -109,6 +110,10 @@ public class View {
         timerLabel = new Label("05:00:00");
         timerLabel.setVisible(true);
         grid.add(timerLabel, 0, 4, 2, 1);
+        
+        scoreLabel = new Label("0");
+        scoreLabel.setVisible(true);
+        grid.add(scoreLabel, 0, 5, 2, 1);
 
 		resultLabel = new Label("ErrorText");
 		resultLabel.setTextFill(Color.web("#EE0000"));
@@ -175,14 +180,24 @@ public class View {
 	private void doTry() {
 //		log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
 		ApplicationScope.getInstance().setErrorMessage(null);
+		ApplicationScope.getInstance().setFoundMethodMessage(null);
 		boolean result = Controller.check(loginTxt.getText(), passwordTxt.getText());
-		if (ApplicationScope.getInstance().getErrorMessage()!=null) {
+		if (result) {
+			if (ApplicationScope.getInstance().getFoundMethodMessage()!=null) {
+				resultLabel.setTextFill(Color.web("#00EE00"));
+				resultLabel.setVisible(true);
+				resultLabel.setText(ApplicationScope.getInstance().getFoundMethodMessage());
+				scoreLabel.setText(ApplicationScope.getInstance().getScore().toString());
+			}else{
+				resultLabel.setVisible(false);
+			}
+		}else if (ApplicationScope.getInstance().getErrorMessage()!=null) {
+			resultLabel.setTextFill(Color.web("#EE0000")); 
 			resultLabel.setVisible(true);
 			resultLabel.setText(ApplicationScope.getInstance().getErrorMessage());
 		}else{
 			resultLabel.setVisible(false);
 		}
-
 //		log.info("Result:" + (result ? "OK" : "KO"));
 	}
 }

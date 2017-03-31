@@ -192,7 +192,7 @@ public class View {
 				resultLabel.setVisible(false);
 			}
 		}else if (ApplicationScope.getInstance().getErrorMessage()!=null) {
-			resultLabel.setTextFill(Color.web("#EE0000"));
+			resultLabel.setTextFill(Color.web("#EE0000")); 
 			resultLabel.setVisible(true);
 			resultLabel.setText(ApplicationScope.getInstance().getErrorMessage());
 		}else{

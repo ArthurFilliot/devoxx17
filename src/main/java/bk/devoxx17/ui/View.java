@@ -8,14 +8,7 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -152,6 +145,7 @@ public class View {
 				timer.scheduleAtFixedRate(timerTask, 0, 1000);
 			}
 			catch (Exception e) {
+				System.out.println("prout");
 			}
 		}
 	}
@@ -167,6 +161,15 @@ public class View {
 		Platform.runLater(new Runnable() {
 			public void run() {
 				timerLabel.setText(Controller.downloadTimer.getTime());
+
+				if(Controller.downloadTimer.isGameOver()){
+					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.setTitle("Game Over");
+					alert.setHeaderText("This round is finished, well done !!");
+					alert.setContentText("Your score is : ");
+
+					alert.showAndWait();
+				}
 			}
 		});
 		if (Controller.downloadTimer.getIsActive() == false){

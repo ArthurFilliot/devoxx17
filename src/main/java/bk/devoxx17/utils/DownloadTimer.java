@@ -10,6 +10,12 @@ public class DownloadTimer {
     private TimerTask innerTask;
     private boolean isActive;
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    private boolean gameOver = false;
+
     public DownloadTimer(int minutes, int seconds) {
         resetTimer(minutes, seconds);
     }
@@ -27,6 +33,8 @@ public class DownloadTimer {
                     isActive = false;
                     innerTimer.cancel();
                     innerTimer.purge();
+                    gameOver = true;
+
                 } else {
                     seconds -= 1;
                 }
@@ -40,7 +48,11 @@ public class DownloadTimer {
     }
 
     public String getTime(){
-        return ("" + minutes + ":" + seconds);
+        String formatMin = String.format("%02d", minutes);
+        String formatSec = String.format("%02d", seconds);
+        String formatRet = formatMin + ":" + formatSec;
+
+        return formatRet;
     }
 
     public boolean getIsActive(){
@@ -48,6 +60,7 @@ public class DownloadTimer {
     }
 
     public void resetTimer(int minutes, int seconds){
+        gameOver = false;
         if (seconds > 60) {
             int minToAdd = seconds / 60;
             this.minutes = minutes;

@@ -2,7 +2,6 @@ package bk.devoxx17.ui;
 
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +47,22 @@ public class TestController {
 	}
 	
 	@Test
+	@Ignore
+	public void TestControllerCheck2() {
+		ArrayListMultimap<InjectionMethod, UserInput> lstEntry = dictionnary.newCopy();
+		List<Map.Entry<InjectionMethod, UserInput>> lstEntries = Lists.newArrayList(lstEntry.entries());
+		check(lstEntries.get(0), lstEntry);
+		check(lstEntries.get(1), lstEntry);
+		check(lstEntries.get(2), lstEntry);
+		check(lstEntries.get(3), lstEntry);
+		check(lstEntries.get(4), lstEntry);
+		check(lstEntries.get(5), lstEntry);
+		check(lstEntries.get(6), lstEntry);
+		check(lstEntries.get(7), lstEntry);
+	}
+	
+	@Test
+	@Ignore
 	public void TestControllerCheck1() {
 		ArrayListMultimap<InjectionMethod, UserInput> lstEntry = dictionnary.newCopy();
 		List<Map.Entry<InjectionMethod, UserInput>> lstEntries = Lists.newArrayList(lstEntry.entries());
@@ -55,6 +70,7 @@ public class TestController {
 		check(lstEntries.get(6), lstEntry);
 		check(lstEntries.get(0), lstEntry);
 		check(lstEntries.get(4), lstEntry);
+		check(lstEntries.get(7), lstEntry);
 		check(lstEntries.get(5), lstEntry);
 		check(lstEntries.get(1), lstEntry);
 		check(lstEntries.get(3), lstEntry);

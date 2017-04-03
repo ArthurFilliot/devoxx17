@@ -3,6 +3,8 @@ package bk.devoxx17.ui;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.apache.log4j.Logger;
+
 import bk.devoxx17.global.ApplicationScope;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -26,6 +28,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class View {
+	
+	private static Logger log = Logger.getLogger(View.class);
 	
 	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.F,
 			KeyCombination.CONTROL_DOWN);
@@ -178,7 +182,7 @@ public class View {
 	}
 	
 	private void doTry() {
-//		log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
+		log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
 		ApplicationScope.getInstance().setErrorMessage(null);
 		ApplicationScope.getInstance().setFoundMethodMessage(null);
 		boolean result = Controller.check(loginTxt.getText(), passwordTxt.getText());
@@ -187,7 +191,6 @@ public class View {
 				resultLabel.setTextFill(Color.web("#00EE00"));
 				resultLabel.setVisible(true);
 				resultLabel.setText(ApplicationScope.getInstance().getFoundMethodMessage());
-				scoreLabel.setText(ApplicationScope.getInstance().getScore().toString());
 			}else{
 				resultLabel.setVisible(false);
 			}
@@ -198,6 +201,7 @@ public class View {
 		}else{
 			resultLabel.setVisible(false);
 		}
-//		log.info("Result:" + (result ? "OK" : "KO"));
+		scoreLabel.setText(ApplicationScope.getInstance().getScore().toString());
+		log.info("Result:" + (result ? "OK" : "KO"));
 	}
 }

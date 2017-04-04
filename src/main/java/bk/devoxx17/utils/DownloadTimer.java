@@ -9,30 +9,34 @@ public class DownloadTimer {
     private Timer innerTimer = new Timer();
     private TimerTask innerTask;
     private boolean isActive;
+    private boolean gameOver = false;
 
     public boolean isGameOver() {
         return gameOver;
     }
 
-    private boolean gameOver = false;
+    public void setGameOver(boolean b){
+        gameOver = b;
+    }
 
     public DownloadTimer(int minutes, int seconds) {
         resetTimer(minutes, seconds);
     }
 
     public void start() {
+        //if(gameOver)
         innerTask = new TimerTask() {
             @Override
             public void run() {
-                //System.out.println(getTime());
+                System.out.println(getTime());
                 isActive = true;
                 if (seconds == 0 && minutes > 0){
                     minutes -= 1;
                     seconds = 59;
                 } else if (seconds == 0 && minutes == 0){
                     isActive = false;
-                    innerTimer.cancel();
-                    innerTimer.purge();
+                    //innerTimer.cancel();
+                    //innerTimer.purge();
                     gameOver = true;
 
                 } else {

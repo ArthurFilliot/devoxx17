@@ -3,6 +3,7 @@ package bk.devoxx17.ui;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import bk.devoxx17.utils.TextAreaLog;
 import org.apache.log4j.Logger;
 
 import bk.devoxx17.global.ApplicationScope;
@@ -28,17 +29,19 @@ public class View {
 	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.F,
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.G,
-			KeyCombination.CONTROL_DOWN);
+			KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN, KeyCombination.SHIFT_DOWN	);
 	private final static KeyCodeCombination SHOWHIDE_MENU = new KeyCodeCombination(KeyCode.M,
-            KeyCombination.CONTROL_DOWN);
+            KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN, KeyCombination.SHIFT_DOWN);
 	private final static KeyCodeCombination RESET_GAME = new KeyCodeCombination(KeyCode.N,
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination STOP_GAME = new KeyCodeCombination(KeyCode.S,
 			KeyCombination.CONTROL_DOWN);
+	private final static KeyCodeCombination QUIT_GAME = new KeyCodeCombination(KeyCode.Q, KeyCombination.SHIFT_DOWN, KeyCombination.ALT_DOWN, KeyCombination.CONTROL_DOWN);
 
 	private static Label resultLabel;
     private static Label timerLabel;
     private static Label scoreLabel;
+    private TextArea txtareaLog = new TextArea();
 	private MenuBar menuBar = new MenuBar();
 	private TextField loginTxt = new TextField();
 	private CheckBox checkbox = new javafx.scene.control.CheckBox();
@@ -52,7 +55,8 @@ public class View {
 	private MenuItem menuReset = new MenuItem("Reset Game");
 
 	private static boolean gameRunning = false;
-	private static final Timer timer = new Timer();
+	private static Timer timer = new Timer();
+	private static TimerTask timerTask;
 	    
 	public View() {}
 	
@@ -83,6 +87,9 @@ public class View {
 		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuReset, menuStop);
 		menuBar.getMenus().add(mainMenu);
 
+		/**
+		 * Enter in textfields
+		 */
 		loginTxt.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
@@ -111,6 +118,14 @@ public class View {
 		});
 
 		/**
+		 * TextArea Log
+		 */
+		txtareaLog.setEditable(false);
+		txtareaLog.setWrapText(true);
+
+		TextAreaLog.setTextArea(txtareaLog);
+
+		/**
 		 * Create, fill a Grid and package it into a Group
 		 */
 		GridPane grid = new GridPane();
@@ -121,6 +136,8 @@ public class View {
 		grid.add(loginTxt, 1, 0);
 		grid.add(new Label("Password: "), 0, 1);
 		grid.add(passwordTxt, 1, 1);
+		grid.add(txtareaLog, 3, 3);
+
 		passwordTxt.managedProperty().bind(checkbox.selectedProperty().not());
 		passwordTxt.visibleProperty().bind(checkbox.selectedProperty().not());
 		dispPwd.managedProperty().bind(checkbox.selectedProperty());
@@ -129,10 +146,12 @@ public class View {
 		grid.add(dispPwd, 1, 1);
 		grid.add(checkbox, 2, 1);
 
+
+
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 2);
 
-        timerLabel = new Label("05:00:00");
+        timerLabel = new Label("05:00");
         timerLabel.setVisible(true);
         grid.add(timerLabel, 0, 4, 2, 1);
         
@@ -151,10 +170,12 @@ public class View {
 		root.setTop(menuBar);
 		root.setCenter(group);
 		primaryStage.setScene(new Scene(root, 300, 250));
+		primaryStage.setFullScreen(true);
 	}
 	
 	private void toggleFullScreenMode() {
-		menuBar.setVisible(!menuBar.isVisible());
+		//menuBar.setVisible(!menuBar.isVisible());
+
 	}
 	
 	private void toggleShowMenuBar() {
@@ -168,7 +189,7 @@ public class View {
 			Controller.initStopWatch();
 
 			try {
-				TimerTask timerTask = new TimerTask() {
+				timerTask = new TimerTask() {
 					@Override
 					public void run() {
 						tickTimer(timer);
@@ -177,7 +198,14 @@ public class View {
 				timer.scheduleAtFixedRate(timerTask, 0, 1000);
 			}
 			catch (Exception e) {
-				System.out.println("prout");
+			}
+		}
+		else{
+			System.out.println("1" + Controller.downloadTimer.isGameOver());
+			if(Controller.downloadTimer.isGameOver()){
+				System.out.println("2");
+				gameRunning = false;
+				Controller.downloadTimer.stop();
 			}
 		}
 	}
@@ -195,6 +223,9 @@ public class View {
 				timerLabel.setText(Controller.downloadTimer.getTime());
 
 				if(Controller.downloadTimer.isGameOver()){
+					gameRunning = false;
+					Controller.downloadTimer.stop();
+
 					Alert alert = new Alert(Alert.AlertType.INFORMATION);
 					alert.setTitle("Game Over");
 					alert.setHeaderText("This round is finished, well done !!");
@@ -206,9 +237,9 @@ public class View {
 		});
 		if (Controller.downloadTimer.getIsActive() == false){
             timer.cancel();
-            timer.purge();
+            //timer.purge();
         } else {
-
+			//resetTimer();
         }
 	}
 	
@@ -234,5 +265,10 @@ public class View {
 		}
 		scoreLabel.setText(ApplicationScope.getInstance().getScore().toString());
 		log.info("Result:" + (result ? "OK" : "KO"));
+	}
+
+	private static void resetTimer(){
+		timer = new Timer();
+		timer.scheduleAtFixedRate(timerTask, 0, 1000);
 	}
 }

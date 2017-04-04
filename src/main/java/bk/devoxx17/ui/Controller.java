@@ -80,7 +80,6 @@ public class Controller {
 	}
 
 	static void initStopWatch(){
-		//downloadTimer.
         downloadTimer.start();
 	}
 

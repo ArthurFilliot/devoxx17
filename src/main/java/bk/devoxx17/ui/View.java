@@ -199,7 +199,7 @@ public class View {
 			resetTimer();
 
 			gameRunning = true;
-			Controller.downloadTimer.resetTimer(0, 5);
+			Controller.downloadTimer.resetTimer(5, 0);
 			Controller.initStopWatch();
 			Controller.reset();
 			resultLabel.setText("");

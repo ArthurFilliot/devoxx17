@@ -24,7 +24,7 @@ public class DownloadTimer {
         innerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(getTime());
+                //System.out.println(getTime());
                 isActive = true;
                 if (seconds == 0 && minutes > 0){
                     minutes -= 1;
@@ -53,6 +53,8 @@ public class DownloadTimer {
         String formatRet = formatMin + ":" + formatSec;
 
         return formatRet;
+
+        //return ("" + minutes + ":" + seconds);
     }
 
     public boolean getIsActive(){

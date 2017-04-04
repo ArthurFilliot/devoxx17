@@ -105,6 +105,7 @@ public class View {
 				}
 			}
 		});
+
 		/**
 		 * Create, fill a Grid and package it into a Group
 		 */

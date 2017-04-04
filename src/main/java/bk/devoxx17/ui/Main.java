@@ -42,13 +42,13 @@ public class Main extends Application {
 				e.printStackTrace();
 			}
 		}else{
-			Controller.doClose=true;
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.setTitle("Nice try");
-			alert.setHeaderText("Alt + F4 detected");
-			alert.setContentText("You know better than that");
-
-			alert.showAndWait();
+//			Controller.doClose=true;
+//			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//			alert.setTitle("Nice try");
+//			alert.setHeaderText("Alt + F4 detected");
+//			alert.setContentText("You know better than that");
+//
+//			alert.showAndWait();
 
 			event.consume();
 			primaryStage.show();

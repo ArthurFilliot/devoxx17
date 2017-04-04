@@ -73,15 +73,31 @@ public class View {
 	private MenuItem menuReset = new MenuItem("Reset Game");
 	private Stage primaryStage;
 	private static boolean gameRunning = false;
-	private static final Timer timer = new Timer();
+	private static Timer timer;
+	private static TimerTask timerTask;
+
 	/**
 	 * Keyloggers
 	 */
 	private static Queue<String> konamiCode = new CircularFifoQueue<String>(12);
 	private static Queue<String> dernieresTouches = new CircularFifoQueue<String>(12);
 	    
-	public View() {}
-	
+	public View() {
+	    //resetTimer();
+    }
+
+	private static void resetTimer() {
+		System.out.println("timer reset");
+		timer = new Timer();
+		timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				tickTimer();
+			}
+		};
+		timer.scheduleAtFixedRate(timerTask, 0, 1000);
+	}
+
 	public void draw(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		initKonamiCode();
@@ -132,7 +148,7 @@ public class View {
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 2);
 
-        timerLabel = new Label("05:00:00");
+        timerLabel = new Label("05:00");
         timerLabel.setVisible(true);
         grid.add(new Label("Time : "), 0, 4);
         grid.add(timerLabel, 1, 4, 2, 1);
@@ -180,23 +196,14 @@ public class View {
 	
 	private static void resetGame() {
 		if(!gameRunning) {
+			resetTimer();
+
 			gameRunning = true;
-			Controller.downloadTimer.resetTimer(5, 0);
+			Controller.downloadTimer.resetTimer(0, 5);
 			Controller.initStopWatch();
 			Controller.reset();
 			resultLabel.setText("");
 			scoreLabel.setText("0");
-			try {
-				TimerTask timerTask = new TimerTask() {
-					@Override
-					public void run() {
-						tickTimer(timer);
-					}
-				};
-				timer.scheduleAtFixedRate(timerTask, 0, 1000);
-			}
-			catch (Exception e) {
-			}
 		}
 	}
 
@@ -207,18 +214,26 @@ public class View {
 		}
 	}
 	
-	private static void tickTimer(Timer timer) {
+	private static void tickTimer() {
+		System.out.println(Controller.downloadTimer.getIsActive());
 		Platform.runLater(new Runnable() {
 			public void run() {
 				timerLabel.setText(Controller.downloadTimer.getTime());
+
+                if(Controller.downloadTimer.isGameOver()){
+					timer.cancel();
+                    gameRunning = false;
+                    Controller.downloadTimer.stop();
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Game Over");
+                    alert.setHeaderText("This round is finished, well done !!");
+                    alert.setContentText("Your score is : " + ApplicationScope.getInstance().getScore().toString());
+
+                    alert.showAndWait();
+                }
 			}
 		});
-		if (Controller.downloadTimer.getIsActive() == false){
-            timer.cancel();
-            timer.purge();
-        } else {
-
-        }
 	}
 	
 	static void logKey(KeyEvent event) {
@@ -229,11 +244,6 @@ public class View {
 			resultLabel.setTextFill(Color.GREEN);
 			resultLabel.setVisible(true);
 			resultLabel.setText("Nice try ! Here is the Konami password : " + pwd);
-//			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//			alert.setTitle("Nice try");
-//			alert.setHeaderText("Here is the Konami password : " + pwd);
-//			alert.setContentText("You know better than that");
-//			alert.showAndWait();
 		}
 	}
 	

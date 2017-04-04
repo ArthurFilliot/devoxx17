@@ -26,13 +26,6 @@ import javafx.scene.input.KeyEvent;
 public class Controller {
 
 	private static Logger log = Logger.getLogger(Controller.class);
-	
-	/**
-	 * Keyloggers
-	 */
-	private static Queue<String> konamiCode = new CircularFifoQueue<String>(12);
-	private static Queue<String> dernieresTouches = new CircularFifoQueue<String>(12);
-
 	private static DatabaseSQL db = new DatabaseSQL();
 	
     static DownloadTimer downloadTimer = new DownloadTimer(5, 0);
@@ -44,38 +37,6 @@ public class Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.exit(0);
-		}
-	}
-
-	static void logKey(KeyEvent event) {
-		dernieresTouches.add(event.getCode().toString());
-		if (dernieresTouches.toString().equals(konamiCode.toString())) {
-			System.out.println("KONAMI");
-			String pwd = Controller.getKonamiCode();
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.setTitle("Nice try");
-			alert.setHeaderText("Here is the Konami password : " + pwd);
-			alert.setContentText("You know better than that");
-			alert.showAndWait();
-		}
-	}
-	
-	static void initKonamiCode() {
-		konamiCode.add("UP");
-		konamiCode.add("UP");
-		konamiCode.add("DOWN");
-		konamiCode.add("DOWN");
-		konamiCode.add("LEFT");
-		konamiCode.add("RIGHT");
-		konamiCode.add("LEFT");
-		konamiCode.add("RIGHT");
-		konamiCode.add("B");
-		konamiCode.add("A");
-		konamiCode.add("ENTER");
-		konamiCode.add("ENTER");
-
-		for(int i = 0 ; i < 12 ; i++) {
-			dernieresTouches.add("");
 		}
 	}
 
@@ -116,6 +77,10 @@ public class Controller {
 	static void init() {
 		log.info("Dispatcher init:");
 	}
+	
+	static void reset() {
+		ApplicationScope.getInstance().init();
+	}
 
 	/**
 	 * Dispatch given login/password to the current injectionMethodToFind
@@ -140,7 +105,7 @@ public class Controller {
 			}
 		}
 		if (foundMethods.size() > 0) {
-			String message = "Access granted ! (You have found method : ";
+			String message = "Congratulations ! (You have found : ";
 			String sep = "";
 			for (InjectionMethod method : foundMethods) {
 				message += sep + method.getLabel();

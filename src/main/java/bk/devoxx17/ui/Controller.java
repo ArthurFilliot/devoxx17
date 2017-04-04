@@ -148,6 +148,7 @@ public class Controller {
 			}
 			message += ")";
 			ApplicationScope.getInstance().setFoundMethodMessage(message);
+			ApplicationScope.getInstance().setScore(score);
 			return true;
 		}
 		return false;

@@ -80,7 +80,6 @@ public class Controller {
 	}
 
 	static void initStopWatch(){
-		//downloadTimer.
         downloadTimer.start();
 	}
 
@@ -148,6 +147,7 @@ public class Controller {
 			}
 			message += ")";
 			ApplicationScope.getInstance().setFoundMethodMessage(message);
+			ApplicationScope.getInstance().setScore(score);
 			return true;
 		}
 		return false;

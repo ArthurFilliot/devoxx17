@@ -14,6 +14,8 @@ public class Dispatcher {
 			return new VulnerabilityEmulatorSQLUnionExploitDeluxe();
 		case STACKED_QUERIES : 	
 			return new VulnerabilityEmulatorSQLStackedQueries();
+		case STACKED_QUERIES_DELUXE : 	
+			return new VulnerabilityEmulatorSQLStackedQueriesDeluxe();
 		case SOCIAL_HACK_KEYBOARD :
 			return new VulnerabilityEmulatorSQLSocialPostIt();
 		case SOCIAL_HACK_HUMAN :

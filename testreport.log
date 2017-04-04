@@ -182,3 +182,47 @@
 2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_2 should work             	OK
 2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_3 should work             	OK
 2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_1 should work             	OK
+2017-04-04 11:54:02 INFO  View:233 - Typed login/password: test/
+2017-04-04 11:54:02 INFO  View:253 - Result:KO
+2017-04-04 11:54:03 INFO  View:233 - Typed login/password: test/
+2017-04-04 11:54:03 INFO  View:253 - Result:KO
+2017-04-04 11:54:04 INFO  View:233 - Typed login/password: test/
+2017-04-04 11:54:04 INFO  View:253 - Result:KO
+2017-04-04 11:54:04 INFO  View:233 - Typed login/password: test/
+2017-04-04 11:54:04 INFO  View:253 - Result:KO
+2017-04-04 11:54:04 INFO  View:233 - Typed login/password: test/
+2017-04-04 11:54:04 INFO  View:253 - Result:KO
+2017-04-04 11:54:04 INFO  View:233 - Typed login/password: test/
+2017-04-04 11:54:04 INFO  View:253 - Result:KO
+2017-04-04 11:54:22 INFO  View:233 - Typed login/password: test/hello
+2017-04-04 11:54:22 INFO  View:253 - Result:KO
+2017-04-04 12:02:37 INFO  View:234 - Typed login/password: login/
+2017-04-04 12:02:37 INFO  View:254 - Result:KO
+2017-04-04 12:20:52 INFO  View:235 - Typed login/password: /
+2017-04-04 12:20:52 INFO  View:255 - Result:KO
+2017-04-04 12:20:59 INFO  View:235 - Typed login/password: /
+2017-04-04 12:20:59 INFO  View:255 - Result:KO
+View:235 - Typed login/password: Konamiba/
+View:255 - Result:KO
+View:235 - Typed login/password: Konami/o9ouavvg4e34li03gsk0lf4q8b
+View:255 - Result:OK
+View:235 - Typed login/password: ' or 1=1;'/
+View:255 - Result:KO
+View:235 - Typed login/password: johndoe/RH8edf43YgfdZETxxZGhj8934fg
+View:255 - Result:KO
+View:235 - Typed login/password: johndoe/RH8edf43YgfdZETxxZGhj8934fg$^�SS
+View:255 - Result:OK
+View:239 - Typed login/password: /
+View:259 - Result:KO
+View:239 - Typed login/password: /
+View:259 - Result:KO
+View:239 - Typed login/password: /
+View:259 - Result:KO
+View:239 - Typed login/password: /
+View:259 - Result:KO
+View:247 - Typed login/password: /
+View:267 - Result:KO
+View:204 - 1 : false
+View:204 - 1 : false
+View:204 - 1 : false
+View:204 - 1 : false

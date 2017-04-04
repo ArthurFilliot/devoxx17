@@ -3,19 +3,16 @@ package bk.devoxx17.ui;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import bk.devoxx17.utils.TextAreaLog;
+import org.apache.log4j.Logger;
+
 import bk.devoxx17.global.ApplicationScope;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -27,19 +24,24 @@ import javafx.stage.Stage;
 
 public class View {
 	
+	private static Logger log = Logger.getLogger(View.class);
+	
 	private final static KeyCodeCombination ENTER_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.F,
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination EXIT_FULLSCREEN_CODE = new KeyCodeCombination(KeyCode.G,
-			KeyCombination.CONTROL_DOWN);
+			KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN, KeyCombination.SHIFT_DOWN	);
 	private final static KeyCodeCombination SHOWHIDE_MENU = new KeyCodeCombination(KeyCode.M,
-            KeyCombination.CONTROL_DOWN);
+            KeyCombination.CONTROL_DOWN, KeyCombination.ALT_DOWN, KeyCombination.SHIFT_DOWN);
 	private final static KeyCodeCombination RESET_GAME = new KeyCodeCombination(KeyCode.N,
 			KeyCombination.CONTROL_DOWN);
 	private final static KeyCodeCombination STOP_GAME = new KeyCodeCombination(KeyCode.S,
 			KeyCombination.CONTROL_DOWN);
+	private final static KeyCodeCombination QUIT_GAME = new KeyCodeCombination(KeyCode.Q, KeyCombination.SHIFT_DOWN, KeyCombination.ALT_DOWN, KeyCombination.CONTROL_DOWN);
 
 	private static Label resultLabel;
     private static Label timerLabel;
+    private static Label scoreLabel;
+    private TextArea txtareaLog = new TextArea();
 	private MenuBar menuBar = new MenuBar();
 	private TextField loginTxt = new TextField();
 	private CheckBox checkbox = new javafx.scene.control.CheckBox();
@@ -53,7 +55,8 @@ public class View {
 	private MenuItem menuReset = new MenuItem("Reset Game");
 
 	private static boolean gameRunning = false;
-	private static final Timer timer = new Timer();
+	private static Timer timer = new Timer();
+	private static TimerTask timerTask;
 	    
 	public View() {}
 	
@@ -85,6 +88,44 @@ public class View {
 		menuBar.getMenus().add(mainMenu);
 
 		/**
+		 * Enter in textfields
+		 */
+		loginTxt.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode().equals(KeyCode.ENTER)){
+					doTry();
+				}
+			}
+		});
+
+		passwordTxt.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode().equals(KeyCode.ENTER)){
+					doTry();
+				}
+			}
+		});
+
+		dispPwd.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode().equals(KeyCode.ENTER)){
+					doTry();
+				}
+			}
+		});
+
+		/**
+		 * TextArea Log
+		 */
+		txtareaLog.setEditable(false);
+		txtareaLog.setWrapText(true);
+
+		TextAreaLog.setTextArea(txtareaLog);
+
+		/**
 		 * Create, fill a Grid and package it into a Group
 		 */
 		GridPane grid = new GridPane();
@@ -92,9 +133,11 @@ public class View {
 		grid.setHgap(10);
 		grid.setPadding(new Insets(5, 5, 5, 5));
 		grid.add(new Label("Login: "), 0, 0);
-		grid.add(loginTxt, 1, 0);				
+		grid.add(loginTxt, 1, 0);
 		grid.add(new Label("Password: "), 0, 1);
 		grid.add(passwordTxt, 1, 1);
+		grid.add(txtareaLog, 3, 3);
+
 		passwordTxt.managedProperty().bind(checkbox.selectedProperty().not());
 		passwordTxt.visibleProperty().bind(checkbox.selectedProperty().not());
 		dispPwd.managedProperty().bind(checkbox.selectedProperty());
@@ -102,13 +145,19 @@ public class View {
 		dispPwd.textProperty().bindBidirectional(passwordTxt.textProperty());
 		grid.add(dispPwd, 1, 1);
 		grid.add(checkbox, 2, 1);
-		
+
+
+
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 2);
 
-        timerLabel = new Label("05:00:00");
+        timerLabel = new Label("05:00");
         timerLabel.setVisible(true);
         grid.add(timerLabel, 0, 4, 2, 1);
+        
+        scoreLabel = new Label("0");
+        scoreLabel.setVisible(true);
+        grid.add(scoreLabel, 0, 5, 2, 1);
 
 		resultLabel = new Label("ErrorText");
 		resultLabel.setTextFill(Color.web("#EE0000"));
@@ -121,10 +170,12 @@ public class View {
 		root.setTop(menuBar);
 		root.setCenter(group);
 		primaryStage.setScene(new Scene(root, 300, 250));
+		primaryStage.setFullScreen(true);
 	}
 	
 	private void toggleFullScreenMode() {
-		menuBar.setVisible(!menuBar.isVisible());
+		//menuBar.setVisible(!menuBar.isVisible());
+
 	}
 	
 	private void toggleShowMenuBar() {
@@ -138,7 +189,7 @@ public class View {
 			Controller.initStopWatch();
 
 			try {
-				TimerTask timerTask = new TimerTask() {
+				timerTask = new TimerTask() {
 					@Override
 					public void run() {
 						tickTimer(timer);
@@ -147,6 +198,14 @@ public class View {
 				timer.scheduleAtFixedRate(timerTask, 0, 1000);
 			}
 			catch (Exception e) {
+			}
+		}
+		else{
+			System.out.println("1" + Controller.downloadTimer.isGameOver());
+			if(Controller.downloadTimer.isGameOver()){
+				System.out.println("2");
+				gameRunning = false;
+				Controller.downloadTimer.stop();
 			}
 		}
 	}
@@ -162,27 +221,54 @@ public class View {
 		Platform.runLater(new Runnable() {
 			public void run() {
 				timerLabel.setText(Controller.downloadTimer.getTime());
+
+				if(Controller.downloadTimer.isGameOver()){
+					gameRunning = false;
+					Controller.downloadTimer.stop();
+
+					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.setTitle("Game Over");
+					alert.setHeaderText("This round is finished, well done !!");
+					alert.setContentText("Your score is : " + ApplicationScope.getInstance().getScore().toString());
+
+					alert.showAndWait();
+				}
 			}
 		});
 		if (Controller.downloadTimer.getIsActive() == false){
             timer.cancel();
-            timer.purge();
+            //timer.purge();
         } else {
-
+			//resetTimer();
         }
 	}
 	
 	private void doTry() {
-//		log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
+		log.info("Typed login/password: " + loginTxt.getText() + "/" + passwordTxt.getText());
 		ApplicationScope.getInstance().setErrorMessage(null);
+		ApplicationScope.getInstance().setFoundMethodMessage(null);
 		boolean result = Controller.check(loginTxt.getText(), passwordTxt.getText());
-		if (ApplicationScope.getInstance().getErrorMessage()!=null) {
+		if (result) {
+			if (ApplicationScope.getInstance().getFoundMethodMessage()!=null) {
+				resultLabel.setTextFill(Color.web("#00EE00"));
+				resultLabel.setVisible(true);
+				resultLabel.setText(ApplicationScope.getInstance().getFoundMethodMessage());
+			}else{
+				resultLabel.setVisible(false);
+			}
+		}else if (ApplicationScope.getInstance().getErrorMessage()!=null) {
+			resultLabel.setTextFill(Color.web("#EE0000")); 
 			resultLabel.setVisible(true);
 			resultLabel.setText(ApplicationScope.getInstance().getErrorMessage());
 		}else{
 			resultLabel.setVisible(false);
 		}
+		scoreLabel.setText(ApplicationScope.getInstance().getScore().toString());
+		log.info("Result:" + (result ? "OK" : "KO"));
+	}
 
-//		log.info("Result:" + (result ? "OK" : "KO"));
+	private static void resetTimer(){
+		timer = new Timer();
+		timer.scheduleAtFixedRate(timerTask, 0, 1000);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import bk.devoxx17.global.ApplicationScope;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -78,6 +79,32 @@ public class View {
 		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuReset, menuStop);
 		menuBar.getMenus().add(mainMenu);
 
+		loginTxt.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode().equals(KeyCode.ENTER)){
+					doTry();
+				}
+			}
+		});
+
+		passwordTxt.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode().equals(KeyCode.ENTER)){
+					doTry();
+				}
+			}
+		});
+
+		dispPwd.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode().equals(KeyCode.ENTER)){
+					doTry();
+				}
+			}
+		});
 		/**
 		 * Create, fill a Grid and package it into a Group
 		 */
@@ -86,7 +113,7 @@ public class View {
 		grid.setHgap(10);
 		grid.setPadding(new Insets(5, 5, 5, 5));
 		grid.add(new Label("Login: "), 0, 0);
-		grid.add(loginTxt, 1, 0);				
+		grid.add(loginTxt, 1, 0);
 		grid.add(new Label("Password: "), 0, 1);
 		grid.add(passwordTxt, 1, 1);
 		passwordTxt.managedProperty().bind(checkbox.selectedProperty().not());
@@ -96,7 +123,7 @@ public class View {
 		dispPwd.textProperty().bindBidirectional(passwordTxt.textProperty());
 		grid.add(dispPwd, 1, 1);
 		grid.add(checkbox, 2, 1);
-		
+
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 2);
 

@@ -198,7 +198,7 @@ public class View {
 					Alert alert = new Alert(Alert.AlertType.INFORMATION);
 					alert.setTitle("Game Over");
 					alert.setHeaderText("This round is finished, well done !!");
-					alert.setContentText("Your score is : ");
+					alert.setContentText("Your score is : " + ApplicationScope.getInstance().getScore().toString());
 
 					alert.showAndWait();
 				}

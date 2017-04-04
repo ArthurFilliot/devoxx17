@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>bk.devoxx17</groupId>
 	<artifactId>BK-loghackgame</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 
 	<dependencies>
 		<dependency>

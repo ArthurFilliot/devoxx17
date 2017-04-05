@@ -206,3 +206,79 @@
 2017-04-05 12:21:35 INFO  View:332 - Result:KO
 2017-04-05 12:21:37 INFO  View:312 - Typed login/password: hf/sdf
 2017-04-05 12:21:37 INFO  View:332 - Result:KO
+2017-04-05 20:49:47 INFO  View:312 - Typed login/password: qsdk/qsdkl
+2017-04-05 20:49:47 INFO  View:332 - Result:KO
+2017-04-05 20:49:50 INFO  View:312 - Typed login/password: test/qsdkl
+2017-04-05 20:49:50 INFO  View:332 - Result:KO
+2017-04-05 20:50:01 INFO  View:312 - Typed login/password: ' or 1=1;'/qsdkl
+2017-04-05 20:50:01 INFO  View:332 - Result:KO
+2017-04-05 20:50:07 INFO  View:312 - Typed login/password: johndoe/' or 1=1;'
+2017-04-05 20:50:07 INFO  View:332 - Result:OK
+2017-04-05 20:50:28 INFO  View:312 - Typed login/password: ' or 1=1; select * from Users;/' or 1=1;'
+2017-04-05 20:50:29 INFO  View:332 - Result:OK
+2017-04-05 20:54:53 INFO  View:312 - Typed login/password: ' or 1=1; select * from Users;/' or 1=1;'
+2017-04-05 20:54:53 INFO  View:332 - Result:OK
+2017-04-05 20:55:04 INFO  View:312 - Typed login/password: hohndoe/' or 1=1;'
+2017-04-05 20:55:04 INFO  View:332 - Result:KO
+2017-04-05 20:55:06 INFO  View:312 - Typed login/password: johndoe/' or 1=1;'
+2017-04-05 20:55:06 INFO  View:332 - Result:KO
+2017-04-05 20:55:20 INFO  View:312 - Typed login/password: johndoe/' or 1=1;'
+2017-04-05 20:55:20 INFO  View:332 - Result:KO
+2017-04-05 20:55:21 INFO  View:312 - Typed login/password: johndoe/' or 1=1;'
+2017-04-05 20:55:21 INFO  View:332 - Result:KO
+2017-04-05 20:55:21 INFO  View:312 - Typed login/password: johndoe/' or 1=1;'
+2017-04-05 20:55:21 INFO  View:332 - Result:KO
+2017-04-05 20:55:21 INFO  View:312 - Typed login/password: johndoe/' or 1=1;'
+2017-04-05 20:55:21 INFO  View:332 - Result:KO
+2017-04-05 20:55:37 INFO  View:312 - Typed login/password: johndoe/' or 1=1;' select * from Users;
+2017-04-05 20:55:37 INFO  View:332 - Result:KO
+2017-04-05 20:55:38 INFO  View:312 - Typed login/password: johndoe/' or 1=1;' select * from Users;
+2017-04-05 20:55:38 INFO  View:332 - Result:KO
+2017-04-05 20:55:38 INFO  View:312 - Typed login/password: johndoe/' or 1=1;' select * from Users;
+2017-04-05 20:55:38 INFO  View:332 - Result:KO
+2017-04-05 20:55:49 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 20:55:49 INFO  View:332 - Result:OK
+2017-04-05 21:00:04 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:04 INFO  View:332 - Result:OK
+2017-04-05 21:00:09 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:10 INFO  View:332 - Result:KO
+2017-04-05 21:00:10 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:10 INFO  View:332 - Result:KO
+2017-04-05 21:00:10 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:10 INFO  View:332 - Result:KO
+2017-04-05 21:00:10 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:10 INFO  View:332 - Result:KO
+2017-04-05 21:00:11 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:11 INFO  View:332 - Result:KO
+2017-04-05 21:00:23 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:23 INFO  View:332 - Result:OK
+2017-04-05 21:00:24 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:24 INFO  View:332 - Result:OK
+2017-04-05 21:00:25 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:25 INFO  View:332 - Result:KO
+2017-04-05 21:00:25 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:25 INFO  View:332 - Result:KO
+2017-04-05 21:00:25 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:25 INFO  View:332 - Result:KO
+2017-04-05 21:00:25 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:25 INFO  View:332 - Result:KO
+2017-04-05 21:00:26 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:00:26 INFO  View:332 - Result:KO
+2017-04-05 21:05:20 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:05:20 INFO  View:332 - Result:KO
+2017-04-05 21:05:21 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:05:21 INFO  View:332 - Result:KO
+2017-04-05 21:05:21 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:05:21 INFO  View:332 - Result:KO
+2017-04-05 21:08:07 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:08:07 INFO  View:332 - Result:OK
+2017-04-05 21:08:08 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:08:08 INFO  View:332 - Result:OK
+2017-04-05 21:08:08 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:08:08 INFO  View:332 - Result:KO
+2017-04-05 21:08:09 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:08:09 INFO  View:332 - Result:KO
+2017-04-05 21:08:09 INFO  View:312 - Typed login/password: postIt/postItPassword
+2017-04-05 21:08:09 INFO  View:332 - Result:KO
+2017-04-05 21:12:11 INFO  View:312 - Typed login/password: root/rootPassword
+2017-04-05 21:12:11 INFO  View:332 - Result:OK

@@ -233,7 +233,7 @@ public class View {
 			resetTimer();
 
 			gameRunning = true;
-			Controller.downloadTimer.resetTimer(5, 0);
+			Controller.downloadTimer.resetTimer(1, 0);
 			Controller.initStopWatch();
 			Controller.reset();
 			resultLabel.setText("");
@@ -246,6 +246,8 @@ public class View {
 			gameRunning = false;
 			ApplicationScope.getInstance().setScore(0);
 			Controller.downloadTimer.stop();
+			timer.cancel();
+			timer.purge();
 		}
 	}
 	
@@ -254,8 +256,13 @@ public class View {
 			public void run() {
 				timerLabel.setText(Controller.downloadTimer.getTime());
 
-                if(Controller.downloadTimer.isGameOver()){
+                if(Controller.downloadTimer.isGameOver() && gameRunning){
+					System.out.println("game over");
 					timer.cancel();
+					timer.purge();
+
+					timerTask.cancel();
+
                     gameRunning = false;
                     Controller.downloadTimer.stop();
 
@@ -270,6 +277,7 @@ public class View {
 						out.close();
 					} catch (IOException e) {
 						//exception handling left as an exercise for the reader
+						System.out.println("Err in file");
 					}
 
                     alert.showAndWait();

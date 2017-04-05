@@ -27,7 +27,7 @@ public class DownloadTimer {
                 } else if (seconds == 0 && minutes == 0){
                     isActive = false;
                     innerTimer.cancel();
-                    //innerTimer.purge();
+                    innerTimer.purge();
                     gameOver = true;
                 } else {
                     seconds -= 1;

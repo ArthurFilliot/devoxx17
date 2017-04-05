@@ -133,6 +133,12 @@ public class View {
 		mainMenu.getItems().addAll(fullscreenCmd, menuCmd, menuReset, menuStop);
 		menuBar.getMenus().add(mainMenu);
 
+		passwordTxt.managedProperty().bind(checkbox.selectedProperty().not());
+		passwordTxt.visibleProperty().bind(checkbox.selectedProperty().not());
+		dispPwd.managedProperty().bind(checkbox.selectedProperty());
+		dispPwd.visibleProperty().bind(checkbox.selectedProperty());
+		dispPwd.textProperty().bindBidirectional(passwordTxt.textProperty());
+
 		/**
 		 * Create, fill a Grid and package it into a Group
 		 */
@@ -142,17 +148,13 @@ public class View {
 		grid.setPadding(new Insets(5, 5, 5, 5));
 		grid.add(new Label("Login: "), 0, 0);
 		grid.add(new Label("Your Name:"), 0, 2);
-		grid.add(loginTxt, 1, 0);
 		grid.add(new Label("Password: "), 0, 1);
+
+		grid.add(loginTxt, 1, 0);
 		grid.add(passwordTxt, 1, 1);
-		grid.add(txtUserName, 1, 2);
-		passwordTxt.managedProperty().bind(checkbox.selectedProperty().not());
-		passwordTxt.visibleProperty().bind(checkbox.selectedProperty().not());
-		dispPwd.managedProperty().bind(checkbox.selectedProperty());
-		dispPwd.visibleProperty().bind(checkbox.selectedProperty());
-		dispPwd.textProperty().bindBidirectional(passwordTxt.textProperty());
 		grid.add(dispPwd, 1, 1);
 		grid.add(checkbox, 2, 1);
+		grid.add(txtUserName, 1, 2);
 		
 		connectBtn.setText("Connect");
 		grid.add(connectBtn, 1, 4);
@@ -233,7 +235,7 @@ public class View {
 			resetTimer();
 
 			gameRunning = true;
-			Controller.downloadTimer.resetTimer(1, 0);
+			Controller.downloadTimer.resetTimer(5, 0);
 			Controller.initStopWatch();
 			Controller.reset();
 			resultLabel.setText("");

@@ -19,7 +19,7 @@ public class DownloadTimer {
         innerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println(getTime());
+                //System.out.println(getTime());
                 isActive = true;
                 if (seconds == 0 && minutes > 0){
                     minutes -= 1;

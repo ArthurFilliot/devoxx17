@@ -182,3 +182,27 @@
 2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_2 should work             	OK
 2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_3 should work             	OK
 2017-03-29 20:53:20 INFO  TestVulnerabilityEmulatorSQL:35 - VulnerabilityEmulatorSQLUnionExploitDeluxe/UNION_EXPLOIT_DELUXE_1 should work             	OK
+2017-04-05 11:21:15 INFO  View:288 - Typed login/password: tertsd/
+2017-04-05 11:21:16 INFO  View:308 - Result:KO
+2017-04-05 11:21:16 INFO  View:288 - Typed login/password: tertsd/
+2017-04-05 11:21:16 INFO  View:308 - Result:KO
+2017-04-05 11:38:57 INFO  View:288 - Typed login/password: postIt/postItPassword
+2017-04-05 11:38:58 INFO  View:308 - Result:OK
+2017-04-05 12:21:32 INFO  View:312 - Typed login/password: tsets/
+2017-04-05 12:21:32 INFO  View:332 - Result:KO
+2017-04-05 12:21:33 INFO  View:312 - Typed login/password: tsets/
+2017-04-05 12:21:33 INFO  View:332 - Result:KO
+2017-04-05 12:21:33 INFO  View:312 - Typed login/password: tsets/
+2017-04-05 12:21:33 INFO  View:332 - Result:KO
+2017-04-05 12:21:33 INFO  View:312 - Typed login/password: tsets/
+2017-04-05 12:21:33 INFO  View:332 - Result:KO
+2017-04-05 12:21:33 INFO  View:312 - Typed login/password: tsets/
+2017-04-05 12:21:33 INFO  View:332 - Result:KO
+2017-04-05 12:21:34 INFO  View:312 - Typed login/password: tsets/sdf
+2017-04-05 12:21:34 INFO  View:332 - Result:KO
+2017-04-05 12:21:35 INFO  View:312 - Typed login/password: tsets/sdf
+2017-04-05 12:21:35 INFO  View:332 - Result:KO
+2017-04-05 12:21:35 INFO  View:312 - Typed login/password: tsets/sdf
+2017-04-05 12:21:35 INFO  View:332 - Result:KO
+2017-04-05 12:21:37 INFO  View:312 - Typed login/password: hf/sdf
+2017-04-05 12:21:37 INFO  View:332 - Result:KO

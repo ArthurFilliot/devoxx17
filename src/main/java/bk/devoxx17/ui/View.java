@@ -1,9 +1,15 @@
 package bk.devoxx17.ui;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.event.EventHandler;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.apache.log4j.Logger;
 
@@ -62,6 +68,7 @@ public class View {
     private static Label scoreLabel;
 	private MenuBar menuBar = new MenuBar();
 	private TextField loginTxt = new TextField();
+	private static TextField txtUserName = new TextField();
 	private CheckBox checkbox = new javafx.scene.control.CheckBox();
 	private PasswordField  passwordTxt = new PasswordField ();
 	private TextField dispPwd = new TextField();
@@ -134,9 +141,11 @@ public class View {
 		grid.setHgap(10);
 		grid.setPadding(new Insets(5, 5, 5, 5));
 		grid.add(new Label("Login: "), 0, 0);
-		grid.add(loginTxt, 1, 0);				
+		grid.add(new Label("Your Name:"), 0, 2);
+		grid.add(loginTxt, 1, 0);
 		grid.add(new Label("Password: "), 0, 1);
 		grid.add(passwordTxt, 1, 1);
+		grid.add(txtUserName, 1, 2);
 		passwordTxt.managedProperty().bind(checkbox.selectedProperty().not());
 		passwordTxt.visibleProperty().bind(checkbox.selectedProperty().not());
 		dispPwd.managedProperty().bind(checkbox.selectedProperty());
@@ -146,17 +155,17 @@ public class View {
 		grid.add(checkbox, 2, 1);
 		
 		connectBtn.setText("Connect");
-		grid.add(connectBtn, 1, 2);
+		grid.add(connectBtn, 1, 4);
 
         timerLabel = new Label("05:00");
         timerLabel.setVisible(true);
-        grid.add(new Label("Time : "), 0, 4);
-        grid.add(timerLabel, 1, 4, 2, 1);
+        grid.add(new Label("Time : "), 0, 6);
+        grid.add(timerLabel, 1, 6, 2, 1);
         
         scoreLabel = new Label("0");
         scoreLabel.setVisible(true);
-        grid.add(new Label("Score : "), 0, 5);
-        grid.add(scoreLabel, 1, 5, 2, 1);
+        grid.add(new Label("Score : "), 0, 7);
+        grid.add(scoreLabel, 1, 7, 2, 1);
 
 		resultLabel = new Label("ErrorText");
 		resultLabel.setTextFill(Color.GREEN);
@@ -168,12 +177,36 @@ public class View {
 		BackgroundFill myBF = new BackgroundFill(Color.LIGHTGREY, new CornerRadii(1),
 		         new Insets(0.0,0.0,0.0,0.0));
 		grid.setBackground(new Background(myBF));
+		loginTxt.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode().equals(KeyCode.ENTER))doTry();
+			}
+		});
+		passwordTxt.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode().equals(KeyCode.ENTER))doTry();
+			}
+		});
+
+		dispPwd.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode().equals(KeyCode.ENTER))doTry();
+			}
+		});
+
 		loginTxt.setMinWidth(200);
+		txtUserName.minWidthProperty().bind(loginTxt.minWidthProperty());
 		passwordTxt.minWidthProperty().bind(loginTxt.minWidthProperty());
 		dispPwd.minWidthProperty().bind(loginTxt.minWidthProperty());
 		grid.setBorder(new Border(new BorderStroke(Color.BLACK, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		
+		menuBar.setVisible(false);
+
+
+
 		BorderPane root = new BorderPane();
 		root.setTop(menuBar);
 		root.setCenter(group);
@@ -184,6 +217,7 @@ public class View {
 		root.setBackground(new Background(myBI));
 		
 		primaryStage.setScene(new Scene(root, 300, 250));
+		primaryStage.setFullScreen(true);
 	}
 	
 	private void toggleFullScreenMode() {
@@ -210,12 +244,12 @@ public class View {
 	private static void stopGame() {
 		if(gameRunning) {
 			gameRunning = false;
+			ApplicationScope.getInstance().setScore(0);
 			Controller.downloadTimer.stop();
 		}
 	}
 	
 	private static void tickTimer() {
-		System.out.println(Controller.downloadTimer.getIsActive());
 		Platform.runLater(new Runnable() {
 			public void run() {
 				timerLabel.setText(Controller.downloadTimer.getTime());
@@ -228,7 +262,15 @@ public class View {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Game Over");
                     alert.setHeaderText("This round is finished, well done !!");
-                    alert.setContentText("Your score is : " + ApplicationScope.getInstance().getScore().toString());
+                    alert.setContentText(txtUserName.getText() + ", your score is : " + ApplicationScope.getInstance().getScore().toString());
+
+					try {
+						PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("scores.txt", true)));
+						out.println(txtUserName.getText() + ";" + ApplicationScope.getInstance().getScore().toString());
+						out.close();
+					} catch (IOException e) {
+						//exception handling left as an exercise for the reader
+					}
 
                     alert.showAndWait();
                 }
